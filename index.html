@@ -458,18 +458,58 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
 .mnav-btn.active,.mnav-btn:hover{color:var(--brand)}
 @media(max-width:680px){
   .mobile-nav{display:block}
-  body{padding-bottom:72px}
+  body{padding-bottom:80px}
   .nav-links{display:none}
-  .hero-banner{height:260px}
-  .hero-glass h1{font-size:26px}
-  .hero-content{padding:20px}
-  .hero-glass{padding:20px 22px}
-  .pgrid{grid-template-columns:repeat(2,1fr)}
+
+  /* Hero */
+  .hero-banner{height:auto;min-height:220px}
+  .hero-content{padding:16px;width:100%}
+  .hero-glass{padding:18px 16px;max-width:100%}
+  .hero-glass h1{font-size:24px}
+
+  /* Product grid — use minmax with a smaller minimum so 2 columns always fit */
+  .pgrid{grid-template-columns:repeat(2,1fr);gap:12px}
+  .pcard-img{height:140px}
+  .pcard-info{padding:10px}
+  .pcard-name{font-size:13px}
+  .p-sale{font-size:14px}
+  .p-old,.p-disc{font-size:10px}
+  .btn-add{font-size:12px;padding:8px 0}
+
+  /* Recommended slider */
+  .rec-card{width:100px;height:90px}
+  .sl-btn.prev{left:-12px}
+  .sl-btn.next{right:-12px}
+
+  /* Filter bar — stack vertically */
+  .filter-bar{flex-direction:column;align-items:flex-start;gap:8px}
+  .filter-bar select{width:100%}
+  .price-range{width:100%}
+  .price-range input[type=range]{width:100%;flex:1}
+  .filter-results{margin-left:0}
+
+  /* Promos */
   .promo-row{grid-template-columns:1fr}
+  .promo{min-height:140px;padding:22px}
+  .promo h3{font-size:18px}
+
+  /* Footer */
   .footer-grid{grid-template-columns:1fr 1fr}
+
+  /* Drawer */
   .drawer{width:100%}
   .form-row{grid-template-columns:1fr}
+
+  /* Compare bar — above mobile nav */
+  .compare-bar{bottom:72px}
   .compare-bar-inner{flex-wrap:wrap}
+
+  /* Toast — above mobile nav */
+  .toast{bottom:84px}
+
+  /* Wrap padding */
+  .wrap{padding:0 14px}
+  .nav-inner{padding:0 14px}
 }
 </style>
 </head>

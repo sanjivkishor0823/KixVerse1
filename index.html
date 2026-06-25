@@ -78,6 +78,22 @@ nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;
   background:#fff;font-size:13px;font-weight:600;color:var(--sub);cursor:pointer;transition:all .15s}
 .cat:hover,.cat.active{background:var(--brand);border-color:var(--brand);color:#fff}
 
+/* ─── SORT & FILTER BAR ─── */
+.filter-bar{display:flex;align-items:center;gap:12px;margin:18px 0;flex-wrap:wrap}
+.filter-bar select{padding:8px 14px;border:1.5px solid var(--border);border-radius:var(--rs);
+  font-size:13px;font-weight:600;font-family:inherit;background:#fff;color:var(--text);cursor:pointer;outline:none;transition:border-color .15s}
+.filter-bar select:focus{border-color:var(--brand)}
+.filter-label{font-size:13px;font-weight:600;color:var(--sub)}
+.price-range{display:flex;align-items:center;gap:8px}
+.price-range input[type=range]{-webkit-appearance:none;width:130px;height:4px;border-radius:2px;background:var(--border);outline:none}
+.price-range input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:16px;height:16px;border-radius:50%;background:var(--brand);cursor:pointer}
+.price-range span{font-size:13px;font-weight:700;color:var(--brand);min-width:50px}
+.filter-results{margin-left:auto;font-size:13px;color:var(--muted);font-weight:500}
+.active-filters{display:flex;gap:8px;flex-wrap:wrap;margin-top:6px}
+.filter-tag{display:inline-flex;align-items:center;gap:6px;padding:4px 12px;background:var(--brand-light);
+  color:var(--brand);border-radius:20px;font-size:12px;font-weight:600}
+.filter-tag button{background:none;border:none;cursor:pointer;padding:0;line-height:1;color:var(--brand);font-size:14px}
+
 /* ─── REC SLIDER ─── */
 .rec-wrap{position:relative}
 .rec-track{display:flex;gap:12px;overflow-x:auto;scroll-behavior:smooth;scrollbar-width:none;padding-bottom:4px}
@@ -98,19 +114,29 @@ nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;
 /* ─── PRODUCT GRID ─── */
 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px}
 .pcard{background:#fff;border-radius:var(--r);border:1px solid var(--border);overflow:hidden;
-  transition:all .2s;cursor:pointer}
+  transition:all .2s;cursor:pointer;position:relative}
 .pcard:hover{box-shadow:0 8px 24px rgba(91,79,232,.12);transform:translateY(-3px)}
 .pcard-img{position:relative;height:175px;background:#F3F4F6;overflow:hidden}
 .pcard-img img{width:100%;height:100%;object-fit:cover;transition:transform .3s}
 .pcard:hover .pcard-img img{transform:scale(1.06)}
 .wish-btn{position:absolute;top:10px;right:10px;width:32px;height:32px;background:rgba(255,255,255,.92);
-  border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;transition:all .15s}
+  border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;transition:all .15s;z-index:2}
 .wish-btn:hover{background:#fff;transform:scale(1.1)}
 .wish-btn svg{width:16px;height:16px;stroke:var(--muted);fill:none;stroke-width:2;transition:all .15s}
 .wish-btn.liked svg{stroke:var(--red);fill:var(--red)}
+.compare-btn{position:absolute;top:10px;left:10px;width:32px;height:32px;background:rgba(255,255,255,.92);
+  border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;transition:all .15s;z-index:2}
+.compare-btn:hover{background:#fff}
+.compare-btn svg{width:14px;height:14px;stroke:var(--muted);fill:none;stroke-width:2;transition:all .15s}
+.compare-btn.active svg{stroke:var(--brand)}
+.compare-btn.active{background:var(--brand-light)}
 .pcard-info{padding:14px}
 .pcard-brand{font-size:11px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
-.pcard-name{font-size:14px;font-weight:700;margin-bottom:8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pcard-name{font-size:14px;font-weight:700;margin-bottom:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pcard-stars{display:flex;align-items:center;gap:4px;margin-bottom:8px}
+.pcard-stars .mini-star{width:11px;height:11px;fill:var(--yellow)}
+.pcard-stars .mini-star-e{width:11px;height:11px;fill:var(--border)}
+.pcard-stars span{font-size:11px;color:var(--muted)}
 .pcard-price{display:flex;align-items:center;gap:8px;margin-bottom:12px}
 .p-sale{font-size:16px;font-weight:800;color:var(--brand)}
 .p-old{font-size:13px;color:var(--muted);text-decoration:line-through}
@@ -119,6 +145,10 @@ nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;
   font-size:13px;font-weight:600;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:8px;transition:background .15s}
 .btn-add:hover{background:var(--brand-dark)}
 .btn-add svg{width:14px;height:14px;stroke:#fff;fill:none;stroke-width:2}
+.new-tag{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:var(--green);color:#fff;
+  font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px;z-index:2}
+.hot-tag{position:absolute;top:10px;left:50%;transform:translateX(-50%);background:var(--red);color:#fff;
+  font-size:10px;font-weight:700;padding:3px 10px;border-radius:20px;letter-spacing:.5px;z-index:2}
 
 /* ─── PROMO BANNERS ─── */
 .promo-row{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-top:40px}
@@ -160,10 +190,6 @@ nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;
 .size-btn:hover{border-color:var(--brand);color:var(--brand)}
 .size-btn.active{background:var(--brand);border-color:var(--brand);color:#fff}
 .size-btn.unavail{opacity:.35;cursor:not-allowed;text-decoration:line-through}
-.colors{display:flex;gap:10px;margin-bottom:24px}
-.color-btn{width:32px;height:32px;border-radius:50%;border:3px solid #fff;cursor:pointer;
-  box-shadow:0 0 0 1.5px var(--border);transition:box-shadow .15s}
-.color-btn.active{box-shadow:0 0 0 2.5px var(--brand)}
 .qty-row{display:flex;align-items:center;gap:16px;margin-bottom:26px}
 .qty-ctrl{display:flex;align-items:center;gap:0;border:1.5px solid var(--border);border-radius:var(--rs);overflow:hidden}
 .qty-b{width:40px;height:42px;background:none;border:none;font-size:20px;font-weight:700;cursor:pointer;
@@ -182,6 +208,82 @@ nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;
 .feature-list{display:flex;flex-direction:column;gap:8px}
 .feature-item{display:flex;align-items:center;gap:10px;font-size:13px;color:var(--sub)}
 .feature-item svg{width:16px;height:16px;stroke:var(--green);fill:none;stroke-width:2.5;flex-shrink:0}
+
+/* ─── REVIEWS SECTION ─── */
+.reviews-section{margin-top:40px;padding-top:32px;border-top:1px solid var(--border)}
+.reviews-section h3{font-size:18px;font-weight:800;margin-bottom:20px}
+.review-summary{display:flex;gap:32px;margin-bottom:28px;padding:24px;background:var(--bg);border-radius:var(--r)}
+.review-big-score{text-align:center}
+.review-big-score .big-num{font-size:56px;font-weight:900;color:var(--text);line-height:1}
+.review-big-score .big-stars{display:flex;gap:3px;justify-content:center;margin:8px 0}
+.review-big-score .big-star{width:18px;height:18px;fill:var(--yellow)}
+.review-big-score p{font-size:12px;color:var(--muted)}
+.review-bars{flex:1}
+.rbar-row{display:flex;align-items:center;gap:10px;margin-bottom:8px}
+.rbar-label{font-size:12px;font-weight:600;color:var(--sub);width:30px}
+.rbar-track{flex:1;height:6px;background:var(--border);border-radius:3px;overflow:hidden}
+.rbar-fill{height:100%;background:var(--yellow);border-radius:3px;transition:width .6s ease}
+.rbar-count{font-size:12px;color:var(--muted);width:26px;text-align:right}
+.review-list{display:flex;flex-direction:column;gap:20px}
+.review-item{padding:20px;background:#fff;border-radius:var(--r);border:1px solid var(--border)}
+.review-header{display:flex;align-items:center;gap:12px;margin-bottom:10px}
+.review-avatar{width:38px;height:38px;border-radius:50%;background:var(--brand-light);display:grid;place-items:center;font-size:14px;font-weight:700;color:var(--brand);flex-shrink:0}
+.review-meta h4{font-size:14px;font-weight:700}
+.review-meta p{font-size:12px;color:var(--muted)}
+.review-stars{display:flex;gap:2px;margin-left:auto}
+.rev-star{width:13px;height:13px;fill:var(--yellow)}
+.review-body{font-size:14px;color:var(--sub);line-height:1.6}
+.review-verified{font-size:11px;font-weight:600;color:var(--green);margin-top:8px;display:flex;align-items:center;gap:4px}
+.write-review-btn{margin-top:20px;padding:12px 24px;border:1.5px solid var(--brand);border-radius:var(--rs);
+  background:none;color:var(--brand);font-size:14px;font-weight:600;cursor:pointer;transition:all .15s}
+.write-review-btn:hover{background:var(--brand-light)}
+
+/* ─── COMPARE BAR ─── */
+.compare-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:2px solid var(--brand);
+  z-index:150;padding:16px 24px;transform:translateY(100%);transition:transform .3s cubic-bezier(.4,0,.2,1)}
+.compare-bar.visible{transform:translateY(0)}
+.compare-bar-inner{max-width:1280px;margin:0 auto;display:flex;align-items:center;gap:16px}
+.compare-slots{display:flex;gap:12px;flex:1}
+.cmp-slot{width:100px;height:60px;border:1.5px dashed var(--border);border-radius:var(--rs);
+  display:flex;align-items:center;justify-content:center;font-size:11px;color:var(--muted);overflow:hidden}
+.cmp-slot.filled{border-style:solid;border-color:var(--brand);background:var(--brand-light);position:relative}
+.cmp-slot img{width:100%;height:100%;object-fit:cover}
+.cmp-slot .cmp-remove{position:absolute;top:2px;right:2px;width:16px;height:16px;background:var(--red);
+  border-radius:50%;border:none;cursor:pointer;display:grid;place-items:center;color:#fff;font-size:10px;line-height:1}
+.cmp-bar-label{font-size:13px;font-weight:700;color:var(--text)}
+.cmp-bar-sub{font-size:11px;color:var(--muted)}
+.btn-compare-now{background:var(--brand);color:#fff;border:none;padding:12px 24px;border-radius:var(--rs);
+  font-size:14px;font-weight:700;cursor:pointer;transition:background .15s}
+.btn-compare-now:hover{background:var(--brand-dark)}
+.btn-clear-cmp{background:none;border:1.5px solid var(--border);color:var(--sub);padding:12px 18px;
+  border-radius:var(--rs);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-clear-cmp:hover{border-color:var(--red);color:var(--red)}
+
+/* ─── COMPARE PAGE ─── */
+.compare-table{width:100%;border-collapse:separate;border-spacing:0;margin:32px 0}
+.compare-table th{padding:16px;text-align:center;font-weight:800;font-size:14px;background:#fff;
+  border-bottom:2px solid var(--border);position:sticky;top:64px;z-index:10}
+.compare-table th:first-child{text-align:left;background:var(--bg);min-width:140px}
+.compare-table td{padding:14px 16px;text-align:center;border-bottom:1px solid var(--border);font-size:14px}
+.compare-table td:first-child{font-weight:600;color:var(--sub);background:var(--bg);text-align:left;font-size:13px}
+.compare-table tr:hover td{background:var(--brand-light)}
+.compare-table tr:hover td:first-child{background:var(--brand-light)}
+.cmp-prod-img{width:90px;height:90px;border-radius:var(--rs);overflow:hidden;margin:0 auto 10px}
+.cmp-prod-img img{width:100%;height:100%;object-fit:cover}
+.cmp-highlight{color:var(--green);font-weight:700}
+.cmp-stars{display:flex;gap:2px;justify-content:center}
+
+/* ─── WISHLIST PAGE ─── */
+.wishlist-header{padding:28px 0 0}
+.wishlist-header h1{font-size:28px;font-weight:900}
+.wishlist-header p{font-size:14px;color:var(--sub);margin-top:6px}
+.wishlist-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:20px;margin-top:24px}
+.wish-empty{text-align:center;padding:80px 20px;color:var(--muted)}
+.wish-empty svg{width:60px;height:60px;stroke:var(--border);fill:none;stroke-width:1.5;margin:0 auto 16px;display:block}
+.wish-empty h3{font-size:18px;font-weight:700;margin-bottom:8px;color:var(--text)}
+.wish-empty p{font-size:14px}
+.btn-wishlist-shop{margin-top:20px;background:var(--brand);color:#fff;border:none;padding:12px 28px;
+  border-radius:var(--rs);font-size:14px;font-weight:600;cursor:pointer}
 
 /* ─── CART DRAWER ─── */
 .overlay{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:200;opacity:0;pointer-events:none;transition:opacity .25s}
@@ -274,7 +376,7 @@ nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;
 .om-item label{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:4px;display:block}
 .om-item span{font-size:14px;font-weight:700}
 .confirm-items{margin-top:20px;padding-top:20px;border-top:1px solid var(--border)}
-.confirm-actions{display:flex;gap:12px;justify-content:center}
+.confirm-actions{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
 .btn-track{background:var(--brand);color:#fff;border:none;padding:13px 32px;border-radius:var(--rs);font-size:14px;font-weight:700;cursor:pointer;transition:background .15s}
 .btn-track:hover{background:var(--brand-dark)}
 .btn-home{background:#fff;color:var(--brand);border:2px solid var(--brand);padding:13px 32px;border-radius:var(--rs);font-size:14px;font-weight:700;cursor:pointer;transition:all .15s}
@@ -346,6 +448,7 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
   .detail-imgs{flex-direction:column}
   .thumb-col{flex-direction:row}
   .main-img{height:300px}
+  .compare-table{font-size:12px}
 }
 @media(max-width:680px){
   .nav-links{display:none}
@@ -358,6 +461,7 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
   .footer-grid{grid-template-columns:1fr 1fr}
   .drawer{width:100%}
   .form-row{grid-template-columns:1fr}
+  .compare-bar-inner{flex-wrap:wrap}
 }
 </style>
 </head>
@@ -371,14 +475,17 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
     </div>
     <ul class="nav-links">
       <li><a href="#" class="active" onclick="goHome();return false">Home</a></li>
-      <li><a href="#" onclick="showCat('Running');return false">Running</a></li>
-      <li><a href="#" onclick="showCat('Basketball');return false">Basketball</a></li>
-      <li><a href="#" onclick="showCat('Lifestyle');return false">Lifestyle</a></li>
-      <li><a href="#" onclick="goHome();return false">Blog</a></li>
+      <li><a href="#" onclick="goWishlist();return false">Wishlist ♡</a></li>
+      <li><a href="#" onclick="goOrders();return false">My Orders</a></li>
+      <li><a href="#" onclick="switchPage('pageTrack');return false">Track Order</a></li>
     </ul>
     <div class="nav-actions">
       <button class="icon-btn" id="searchBtn" title="Search">
         <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+      </button>
+      <button class="icon-btn" id="wishlistNavBtn" title="Wishlist" onclick="goWishlist()">
+        <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+        <span class="badge" id="wishBadge" style="display:none">0</span>
       </button>
       <button class="icon-btn" id="cartBtn" title="Cart">
         <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
@@ -389,6 +496,7 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
   </div>
 </nav>
 
+<!-- ══ HOME PAGE ══ -->
 <div class="page active" id="pageHome">
   <div class="wrap">
     <div class="hero-banner">
@@ -411,6 +519,9 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
         <button class="cat" data-cat="Lifestyle">Lifestyle</button>
         <button class="cat" data-cat="Training">Training</button>
         <button class="cat" data-cat="Outdoor">Outdoor</button>
+        <button class="cat" data-cat="Skateboarding">Skateboarding</button>
+        <button class="cat" data-cat="Soccer">Soccer</button>
+        <button class="cat" data-cat="Tennis">Tennis</button>
         <button class="cat" data-cat="Kids">Kids</button>
         <button class="cat" data-cat="Limited">Limited Edition</button>
       </div>
@@ -428,8 +539,45 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
     </div>
     <div class="sec" id="productsAnchor">
       <div class="sec-head">
-        <h2 class="sec-title" id="prodTitle">Products</h2>
+        <h2 class="sec-title" id="prodTitle">All Sneakers</h2>
         <span class="sec-link" id="viewAllBtn" style="display:none" onclick="resetCatFilter()">Clear filter ×</span>
+      </div>
+      <!-- Sort & Filter Bar -->
+      <div class="filter-bar">
+        <span class="filter-label">Sort by:</span>
+        <select id="sortSelect" onchange="applyFilters()">
+          <option value="default">Featured</option>
+          <option value="price-asc">Price: Low to High</option>
+          <option value="price-desc">Price: High to Low</option>
+          <option value="rating">Top Rated</option>
+          <option value="discount">Biggest Discount</option>
+          <option value="newest">Newest</option>
+        </select>
+        <span class="filter-label" style="margin-left:8px">Max Price:</span>
+        <div class="price-range">
+          <input type="range" id="priceRange" min="500" max="42000" value="42000" oninput="applyFilters()"/>
+          <span id="priceLabel">₹42,000</span>
+        </div>
+        <span class="filter-label" style="margin-left:8px">Brand:</span>
+        <select id="brandSelect" onchange="applyFilters()">
+          <option value="All">All Brands</option>
+          <option value="Nike">Nike</option>
+          <option value="Adidas">Adidas</option>
+          <option value="Jordan">Jordan</option>
+          <option value="Puma">Puma</option>
+          <option value="New Balance">New Balance</option>
+          <option value="Asics">Asics</option>
+          <option value="Vans">Vans</option>
+          <option value="Converse">Converse</option>
+          <option value="Reebok">Reebok</option>
+          <option value="Salomon">Salomon</option>
+          <option value="Hoka">Hoka</option>
+          <option value="Brooks">Brooks</option>
+          <option value="On Running">On Running</option>
+          <option value="Under Armour">Under Armour</option>
+          <option value="Saucony">Saucony</option>
+        </select>
+        <span class="filter-results" id="filterResults"></span>
       </div>
       <div class="pgrid" id="productGrid"></div>
     </div>
@@ -449,9 +597,33 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
         <div><button class="btn-promo" onclick="showCat('Basketball')">Shop Pro</button></div>
       </div>
     </div>
+    <!-- Extra Offers Row -->
+    <div class="promo-row" style="margin-top:20px">
+      <div class="promo" style="background:linear-gradient(135deg,#059669,#10B981)">
+        <div>
+          <div class="promo-tag" style="color:rgba(255,255,255,.75)">🇮🇳 Independence Special</div>
+          <h3>Flat ₹1,500 Off<br>Orders Above ₹8,000</h3>
+        </div>
+        <div>
+          <div style="font-size:11px;color:rgba(255,255,255,.65);margin-bottom:8px">Use code: <strong style="color:#fff">INDIA75</strong></div>
+          <button class="btn-promo" onclick="showToast('Code INDIA75 applied! ₹1,500 off on orders ₹8,000+','check')">Claim Offer</button>
+        </div>
+      </div>
+      <div class="promo" style="background:linear-gradient(135deg,#DC2626,#9333EA)">
+        <div>
+          <div class="promo-tag" style="color:rgba(255,255,255,.75)">⚡ Flash Sale</div>
+          <h3>Extra 10% Off<br>On First Order</h3>
+        </div>
+        <div>
+          <div style="font-size:11px;color:rgba(255,255,255,.65);margin-bottom:8px">Use code: <strong style="color:#fff">KIXFIRST</strong></div>
+          <button class="btn-promo" onclick="showToast('Code KIXFIRST applied! Extra 10% off your first order!','check')">Grab Deal</button>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
 
+<!-- ══ PRODUCT DETAIL PAGE ══ -->
 <div class="page" id="pageDetail">
   <div class="wrap">
     <div class="breadcrumb">
@@ -493,15 +665,57 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
         <div class="d-features">
           <h4>Shipping & Returns</h4>
           <div class="feature-list">
-            <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Free standard shipping on orders over $150</div>
+            <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>Free standard shipping on orders over ₹12,600</div>
             <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>30-day risk-free return policy</div>
+            <div class="feature-item"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>100% Authenticity Guaranteed</div>
           </div>
         </div>
       </div>
     </div>
+    <!-- Reviews Section -->
+    <div class="reviews-section" id="reviewsSection">
+      <h3>Customer Reviews</h3>
+      <div class="review-summary">
+        <div class="review-big-score">
+          <div class="big-num" id="revBigNum">4.8</div>
+          <div class="big-stars" id="revBigStars"></div>
+          <p id="revBigCount">0 reviews</p>
+        </div>
+        <div class="review-bars" id="revBars"></div>
+      </div>
+      <div class="review-list" id="reviewList"></div>
+      <button class="write-review-btn" onclick="showToast('Review feature coming soon! ✍️','check')">Write a Review</button>
+    </div>
   </div>
 </div>
 
+<!-- ══ COMPARE PAGE ══ -->
+<div class="page" id="pageCompare">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <span onclick="goHome()">Home</span><span class="sep">/</span>
+      <span class="cur">Compare Products</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:24px 0 20px">
+      <h1 style="font-size:24px;font-weight:900">Compare Sneakers</h1>
+      <button onclick="goHome()" style="padding:10px 20px;border:1.5px solid var(--border);border-radius:var(--rs);background:#fff;font-size:13px;font-weight:600;cursor:pointer">← Back to Shop</button>
+    </div>
+    <div id="compareTableWrap"></div>
+  </div>
+</div>
+
+<!-- ══ WISHLIST PAGE ══ -->
+<div class="page" id="pageWishlist">
+  <div class="wrap">
+    <div class="wishlist-header">
+      <h1>My Wishlist</h1>
+      <p id="wishSubtitle">Your saved sneakers</p>
+    </div>
+    <div id="wishlistContent"></div>
+  </div>
+</div>
+
+<!-- ══ CHECKOUT PAGE ══ -->
 <div class="page" id="pageCheckout">
   <div class="wrap">
     <div class="checkout-grid">
@@ -515,7 +729,26 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
           <div class="form-group full"><label>Address Line 1</label><input type="text" id="chkAddr"/></div>
           <div class="form-row">
             <div class="form-group"><label>City</label><input type="text" id="chkCity"/></div>
-            <div class="form-group"><label>Postal Code</label><input type="text" id="chkZip"/></div>
+            <div class="form-group"><label>Postal Code / PIN</label><input type="text" id="chkZip" placeholder="e.g. 600001"/></div>
+          </div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>State</label>
+              <select id="chkState" style="padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:inherit;outline:none;background:#fff;width:100%">
+                <option value="">Select State</option>
+                <option>Andhra Pradesh</option><option>Arunachal Pradesh</option><option>Assam</option>
+                <option>Bihar</option><option>Chhattisgarh</option><option>Delhi</option>
+                <option>Goa</option><option>Gujarat</option><option>Haryana</option>
+                <option>Himachal Pradesh</option><option>Jharkhand</option><option selected>Karnataka</option>
+                <option>Kerala</option><option>Madhya Pradesh</option><option>Maharashtra</option>
+                <option>Manipur</option><option>Meghalaya</option><option>Mizoram</option>
+                <option>Nagaland</option><option>Odisha</option><option>Punjab</option>
+                <option>Rajasthan</option><option>Sikkim</option><option>Tamil Nadu</option>
+                <option>Telangana</option><option>Tripura</option><option>Uttar Pradesh</option>
+                <option>Uttarakhand</option><option>West Bengal</option>
+              </select>
+            </div>
+            <div class="form-group"><label>Mobile Number</label><input type="tel" id="chkMobile" placeholder="+91 98765 43210"/></div>
           </div>
         </div>
         <div class="form-section">
@@ -525,6 +758,11 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
               <input type="radio" name="payRadio" id="payRadioCard" checked/>
               <span class="pay-opt-label">Credit / Debit Card</span>
               <span class="pay-opt-icon">💳</span>
+            </div>
+            <div class="pay-opt" onclick="setPayment('upi')">
+              <input type="radio" name="payRadio" id="payRadioUpi"/>
+              <span class="pay-opt-label">UPI / GPay / PhonePe</span>
+              <span class="pay-opt-icon">🇮🇳</span>
             </div>
             <div class="pay-opt" onclick="setPayment('cod')">
               <input type="radio" name="payRadio" id="payRadioCod"/>
@@ -538,6 +776,10 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
               <div class="form-group"><label>Expiry Date</label><input type="text" placeholder="MM/YY" id="chkCardExp"/></div>
               <div class="form-group"><label>CVC</label><input type="text" placeholder="xxx" id="chkCardCvc"/></div>
             </div>
+          </div>
+          <div class="card-fields" id="upiFields" style="display:none">
+            <div class="form-group full"><label>UPI ID</label><input type="text" id="chkUpiId" placeholder="yourname@upi"/></div>
+            <div style="font-size:12px;color:var(--muted);margin-top:4px">Supported: Google Pay, PhonePe, Paytm, BHIM UPI</div>
           </div>
         </div>
       </div>
@@ -556,6 +798,7 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
   </div>
 </div>
 
+<!-- ══ ORDER CONFIRM PAGE ══ -->
 <div class="page" id="pageConfirm">
   <div class="confirm-wrap">
     <div class="confirm-icon"><svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg></div>
@@ -572,11 +815,271 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
       <div class="confirm-items" id="confItems"></div>
     </div>
     <div class="confirm-actions">
-      <button class="btn-track" onclick="showToast('Tracking setup coming soon!','warn')">Track Order</button>
+      <button class="btn-track" onclick="goOrders()">📋 My Orders</button>
+      <button class="btn-track" onclick="goTrackOrder()" style="background:var(--green)">📦 Track Order</button>
+      <button class="btn-home" onclick="goReturns()">↩ Return / Refund</button>
       <button class="btn-home" onclick="goHome()">Continue Shopping</button>
     </div>
   </div>
 </div>
+
+<!-- ══ MY ORDERS PAGE ══ -->
+<div class="page" id="pageOrders">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <span onclick="goHome()">Home</span><span class="sep">/</span>
+      <span class="cur">My Orders</span>
+    </div>
+    <div style="display:flex;justify-content:space-between;align-items:center;padding:28px 0 20px;flex-wrap:wrap;gap:12px">
+      <div>
+        <h1 style="font-size:26px;font-weight:900;margin-bottom:4px">My Orders</h1>
+        <p style="font-size:14px;color:var(--sub)" id="ordersSubtitle">All your past purchases in one place</p>
+      </div>
+      <div style="display:flex;gap:8px">
+        <select id="orderFilterStatus" onchange="renderOrdersPage()" style="padding:9px 14px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:13px;font-weight:600;font-family:inherit;background:#fff;outline:none;cursor:pointer">
+          <option value="All">All Orders</option>
+          <option value="Confirmed">Confirmed</option>
+          <option value="Shipped">Shipped</option>
+          <option value="Delivered">Delivered</option>
+          <option value="Cancelled">Cancelled</option>
+        </select>
+      </div>
+    </div>
+    <div id="ordersContent"></div>
+  </div>
+</div>
+
+<style>
+/* ─── ORDERS PAGE ─── */
+.order-row{background:#fff;border-radius:var(--r);border:1px solid var(--border);overflow:hidden;margin-bottom:16px;transition:box-shadow .2s}
+.order-row:hover{box-shadow:0 4px 20px rgba(91,79,232,.1)}
+.order-row-head{display:flex;align-items:center;gap:16px;padding:18px 22px;border-bottom:1px solid var(--border);flex-wrap:wrap;gap:12px}
+.order-id-block{flex:1;min-width:150px}
+.order-id-block .oid{font-size:14px;font-weight:800;color:var(--text)}
+.order-id-block .odate{font-size:12px;color:var(--muted);margin-top:2px}
+.order-status-pill{padding:5px 14px;border-radius:20px;font-size:12px;font-weight:700;white-space:nowrap}
+.status-confirmed{background:#EEF2FF;color:#4338CA}
+.status-processing{background:#FEF3C7;color:#92400E}
+.status-shipped{background:#DBEAFE;color:#1D4ED8}
+.status-outfordelivery{background:#F3E8FF;color:#7C3AED}
+.status-delivered{background:#D1FAE5;color:#065F46}
+.status-cancelled{background:#FEE2E2;color:#991B1B}
+.order-total-block{text-align:right;min-width:100px}
+.order-total-block .ototal{font-size:16px;font-weight:800;color:var(--text)}
+.order-total-block .opay{font-size:11px;color:var(--muted);margin-top:2px}
+.order-row-body{padding:18px 22px}
+.order-items-list{display:flex;flex-direction:column;gap:12px}
+.order-item-row{display:flex;gap:14px;align-items:center}
+.oi-img{width:64px;height:64px;border-radius:var(--rs);overflow:hidden;background:var(--bg);flex-shrink:0}
+.oi-img img{width:100%;height:100%;object-fit:cover}
+.oi-info{flex:1}
+.oi-info .oi-name{font-size:14px;font-weight:700;color:var(--text)}
+.oi-info .oi-meta{font-size:12px;color:var(--muted);margin-top:2px}
+.oi-price{font-size:14px;font-weight:800;color:var(--brand);text-align:right;white-space:nowrap}
+.order-row-foot{padding:14px 22px;background:var(--bg);display:flex;gap:10px;flex-wrap:wrap;border-top:1px solid var(--border)}
+.btn-order-track{padding:9px 18px;background:var(--brand);color:#fff;border:none;border-radius:var(--rs);font-size:13px;font-weight:600;cursor:pointer;transition:background .15s}
+.btn-order-track:hover{background:var(--brand-dark)}
+.btn-order-return{padding:9px 18px;background:#fff;color:var(--sub);border:1.5px solid var(--border);border-radius:var(--rs);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-order-return:hover{border-color:var(--brand);color:var(--brand)}
+.btn-order-reorder{padding:9px 18px;background:var(--brand-light);color:var(--brand);border:none;border-radius:var(--rs);font-size:13px;font-weight:600;cursor:pointer;transition:all .15s}
+.btn-order-reorder:hover{background:var(--brand);color:#fff}
+.orders-empty{text-align:center;padding:80px 20px;color:var(--muted)}
+.orders-empty .oe-icon{font-size:56px;margin-bottom:16px}
+.orders-empty h3{font-size:20px;font-weight:800;color:var(--text);margin-bottom:8px}
+.orders-empty p{font-size:14px;color:var(--sub);margin-bottom:24px}
+.orders-summary-bar{display:grid;grid-template-columns:repeat(4,1fr);gap:16px;margin-bottom:28px}
+.osb-card{background:#fff;border-radius:var(--rs);border:1px solid var(--border);padding:16px 20px}
+.osb-card .osb-num{font-size:24px;font-weight:900;color:var(--brand)}
+.osb-card .osb-label{font-size:12px;color:var(--muted);margin-top:2px;font-weight:500}
+@media(max-width:680px){
+  .orders-summary-bar{grid-template-columns:repeat(2,1fr)}
+  .order-row-head{flex-direction:column;align-items:flex-start}
+}
+</style>
+
+<!-- ══ TRACK ORDER PAGE ══ -->
+<div class="page" id="pageTrack">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <span onclick="goHome()">Home</span><span class="sep">/</span>
+      <span class="cur">Track Order</span>
+    </div>
+    <div style="max-width:660px;margin:40px auto">
+      <h1 style="font-size:26px;font-weight:900;margin-bottom:6px">Track Your Order</h1>
+      <p style="color:var(--sub);font-size:14px;margin-bottom:28px">Enter your order ID to get real-time delivery updates.</p>
+      <div style="background:#fff;border-radius:var(--r);border:1px solid var(--border);padding:28px;margin-bottom:24px">
+        <div class="form-group" style="margin-bottom:16px">
+          <label>Order ID</label>
+          <input type="text" id="trackOrderId" placeholder="e.g. KV-123456" style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:inherit;outline:none"/>
+        </div>
+        <button onclick="doTrackOrder()" style="background:var(--brand);color:#fff;border:none;padding:12px 28px;border-radius:var(--rs);font-size:14px;font-weight:700;cursor:pointer;width:100%">Track Order →</button>
+      </div>
+      <div id="trackResult" style="display:none">
+        <div style="background:#fff;border-radius:var(--r);border:1px solid var(--border);padding:28px">
+          <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:20px">
+            <div>
+              <div style="font-size:12px;color:var(--muted);font-weight:600;text-transform:uppercase;letter-spacing:.5px">Order ID</div>
+              <div style="font-size:17px;font-weight:800;color:var(--text)" id="trackShowId">KV-000000</div>
+            </div>
+            <span id="trackStatusBadge" style="padding:6px 16px;border-radius:20px;font-size:12px;font-weight:700">In Transit</span>
+          </div>
+          <!-- Timeline -->
+          <div class="track-timeline" id="trackTimeline"></div>
+          <div style="margin-top:24px;padding:16px;background:var(--brand-light);border-radius:var(--rs)">
+            <div style="font-size:13px;font-weight:700;color:var(--brand);margin-bottom:4px">📦 Estimated Delivery</div>
+            <div style="font-size:15px;font-weight:800;color:var(--text)" id="trackETA">—</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+.track-timeline{display:flex;flex-direction:column;gap:0}
+.track-step{display:flex;gap:16px;position:relative}
+.track-step:not(:last-child)::after{content:'';position:absolute;left:15px;top:32px;width:2px;height:calc(100% + 0px);background:var(--border);z-index:0}
+.track-step.done:not(:last-child)::after{background:var(--green)}
+.track-dot{width:32px;height:32px;border-radius:50%;border:2px solid var(--border);background:#fff;display:grid;place-items:center;flex-shrink:0;z-index:1;font-size:13px}
+.track-step.done .track-dot{background:var(--green);border-color:var(--green);color:#fff}
+.track-step.active .track-dot{background:var(--brand);border-color:var(--brand);color:#fff;box-shadow:0 0 0 4px var(--brand-light)}
+.track-info{padding:4px 0 20px}
+.track-info h4{font-size:14px;font-weight:700;color:var(--text)}
+.track-info p{font-size:12px;color:var(--muted);margin-top:2px}
+</style>
+
+<script>
+let lastOrderId = '';
+function goTrackOrder(){
+  const oid = document.getElementById('confOrderId');
+  if(oid) document.getElementById('trackOrderId').value = oid.textContent;
+  switchPage('pageTrack');
+}
+function doTrackOrder(){
+  const id = document.getElementById('trackOrderId').value.trim();
+  if(!id){ showToast('Please enter an order ID','warn'); return; }
+  lastOrderId = id;
+  document.getElementById('trackShowId').textContent = id;
+  const statuses = ['Order Confirmed','Processing','Shipped','Out for Delivery','Delivered'];
+  const icons = ['✓','⚙','🚚','📍','🎉'];
+  const step = Math.floor(Math.random()*3)+1; // random step 1-3 (not delivered)
+  const timeline = document.getElementById('trackTimeline');
+  timeline.innerHTML = '';
+  const statusColors = {0:'#6B7280',1:'#F59E0B',2:'#3B82F6',3:'#8B5CF6',4:'#10B981'};
+  statuses.forEach((s,i)=>{
+    const cls = i < step ? 'track-step done' : i===step ? 'track-step active' : 'track-step';
+    const dates = ['Jun 24','Jun 24','Jun 25','Jun 26','Jun 27'];
+    const times = ['10:32 AM','2:15 PM','6:00 PM','9:00 AM','By 8 PM'];
+    timeline.innerHTML += `<div class="${cls}"><div class="track-dot">${icons[i]}</div><div class="track-info"><h4>${s}</h4><p>${i<=step?dates[i]+' • '+times[i]:'Expected '+dates[i]}</p></div></div>`;
+  });
+  const badge = document.getElementById('trackStatusBadge');
+  const activeStatus = statuses[step];
+  badge.textContent = activeStatus;
+  badge.style.background = statusColors[step]+'22';
+  badge.style.color = statusColors[step];
+  const etaDays = ['Today','Tomorrow','Jun 27'];
+  document.getElementById('trackETA').textContent = etaDays[Math.floor(Math.random()*3)] + ' between 9 AM – 8 PM';
+  document.getElementById('trackResult').style.display = 'block';
+}
+</script>
+
+<!-- ══ RETURN & REFUND PAGE ══ -->
+<div class="page" id="pageReturn">
+  <div class="wrap">
+    <div class="breadcrumb">
+      <span onclick="goHome()">Home</span><span class="sep">/</span>
+      <span class="cur">Returns & Refunds</span>
+    </div>
+    <div style="max-width:780px;margin:40px auto">
+      <h1 style="font-size:26px;font-weight:900;margin-bottom:6px">Returns & Refund Policy</h1>
+      <p style="color:var(--sub);font-size:14px;margin-bottom:32px">We want you to love your purchase. If something isn't right, we make it easy.</p>
+
+      <!-- Policy Cards -->
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:32px">
+        <div style="background:#fff;border-radius:var(--r);border:1px solid var(--border);padding:20px;text-align:center">
+          <div style="font-size:28px;margin-bottom:8px">📅</div>
+          <div style="font-size:15px;font-weight:800;margin-bottom:4px">30-Day Returns</div>
+          <div style="font-size:12px;color:var(--sub)">Return within 30 days of delivery for a full refund</div>
+        </div>
+        <div style="background:#fff;border-radius:var(--r);border:1px solid var(--border);padding:20px;text-align:center">
+          <div style="font-size:28px;margin-bottom:8px">💳</div>
+          <div style="font-size:15px;font-weight:800;margin-bottom:4px">Instant Refund</div>
+          <div style="font-size:12px;color:var(--sub)">Refund credited within 5–7 business days</div>
+        </div>
+        <div style="background:#fff;border-radius:var(--r);border:1px solid var(--border);padding:20px;text-align:center">
+          <div style="font-size:28px;margin-bottom:8px">🆓</div>
+          <div style="font-size:15px;font-weight:800;margin-bottom:4px">Free Returns</div>
+          <div style="font-size:12px;color:var(--sub)">Free pickup for returns across India</div>
+        </div>
+      </div>
+
+      <!-- Return Steps -->
+      <div style="background:#fff;border-radius:var(--r);border:1px solid var(--border);padding:28px;margin-bottom:24px">
+        <h3 style="font-size:16px;font-weight:800;margin-bottom:20px">How to Return</h3>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0">1</div>
+            <div><div style="font-size:14px;font-weight:700">Initiate Return</div><div style="font-size:13px;color:var(--sub);margin-top:2px">Log in to your account → Orders → Select item → Click "Return Item"</div></div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0">2</div>
+            <div><div style="font-size:14px;font-weight:700">Schedule Pickup</div><div style="font-size:13px;color:var(--sub);margin-top:2px">Choose a pickup date. Our courier will collect the package from your doorstep.</div></div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--brand);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0">3</div>
+            <div><div style="font-size:14px;font-weight:700">Pack the Item</div><div style="font-size:13px;color:var(--sub);margin-top:2px">Place shoes in original box with all accessories, tags, and invoice intact.</div></div>
+          </div>
+          <div style="display:flex;gap:16px;align-items:flex-start">
+            <div style="width:32px;height:32px;border-radius:50%;background:var(--green);color:#fff;display:grid;place-items:center;font-size:13px;font-weight:800;flex-shrink:0">4</div>
+            <div><div style="font-size:14px;font-weight:700">Receive Refund</div><div style="font-size:13px;color:var(--sub);margin-top:2px">Once verified, refund is credited to your original payment method in 5–7 business days.</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Submit Return Form -->
+      <div style="background:#fff;border-radius:var(--r);border:1px solid var(--border);padding:28px;margin-bottom:24px">
+        <h3 style="font-size:16px;font-weight:800;margin-bottom:20px">Submit a Return Request</h3>
+        <div class="form-group"><label>Order ID</label><input type="text" id="retOrderId" placeholder="KV-123456"/></div>
+        <div class="form-group"><label>Reason for Return</label>
+          <select id="retReason" style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:inherit;outline:none;background:#fff">
+            <option value="">Select reason</option>
+            <option>Wrong size delivered</option>
+            <option>Defective / damaged product</option>
+            <option>Item not as described</option>
+            <option>Changed my mind</option>
+            <option>Wrong item delivered</option>
+            <option>Quality not satisfactory</option>
+          </select>
+        </div>
+        <div class="form-group"><label>Additional Comments (optional)</label>
+          <textarea id="retComment" placeholder="Describe the issue..." style="width:100%;padding:11px 14px;border:1.5px solid var(--border);border-radius:var(--rs);font-size:14px;font-family:inherit;outline:none;resize:vertical;min-height:80px"></textarea>
+        </div>
+        <button onclick="submitReturn()" style="background:var(--brand);color:#fff;border:none;padding:13px 28px;border-radius:var(--rs);font-size:14px;font-weight:700;cursor:pointer;width:100%">Submit Return Request</button>
+      </div>
+
+      <!-- Non-Returnable Notice -->
+      <div style="background:#FEF3C7;border-radius:var(--rs);padding:16px 20px;border:1px solid #FCD34D">
+        <div style="font-size:13px;font-weight:700;color:#92400E;margin-bottom:4px">⚠️ Non-Returnable Items</div>
+        <div style="font-size:13px;color:#78350F">Limited Edition sneakers, items marked "Final Sale", and products worn / altered after delivery cannot be returned.</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+function goReturns(){ switchPage('pageReturn'); }
+function submitReturn(){
+  const oid = document.getElementById('retOrderId').value.trim();
+  const reason = document.getElementById('retReason').value;
+  if(!oid){ showToast('Please enter your Order ID','warn'); return; }
+  if(!reason){ showToast('Please select a return reason','warn'); return; }
+  const ref = 'RET-' + Math.floor(100000+Math.random()*900000);
+  showToast('Return request ' + ref + ' submitted! We will contact you within 24 hrs.','check');
+  document.getElementById('retOrderId').value='';
+  document.getElementById('retReason').value='';
+  document.getElementById('retComment').value='';
+}
+</script>
 
 <footer>
   <div class="wrap">
@@ -595,24 +1098,30 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
           <li><a href="#" onclick="showCat('Basketball');return false">Basketball</a></li>
           <li><a href="#" onclick="showCat('Lifestyle');return false">Lifestyle</a></li>
           <li><a href="#" onclick="showCat('Limited');return false">Limited Edition</a></li>
+          <li><a href="#" onclick="goWishlist();return false">My Wishlist</a></li>
+          <li><a href="#" onclick="goOrders();return false">My Orders</a></li>
         </ul>
       </div>
       <div class="fc">
         <h4>Support</h4>
         <ul>
-          <li><a href="#" onclick="showToast('Contact layout coming soon!','check');return false">Contact Us</a></li>
-          <li><a href="#" onclick="showToast('FAQ center under setup.','check');return false">FAQs</a></li>
-          <li><a href="#" onclick="showToast('Shipping terms details.','check');return false">Shipping & Returns</a></li>
-          <li><a href="#" onclick="showToast('Size guide loading...','check');return false">Size Guide</a></li>
+          <li><a href="mailto:support@kixverse.in" onclick="showToast('Email: support@kixverse.in','check');return false">📧 support@kixverse.in</a></li>
+          <li><a href="tel:+918001234567" onclick="showToast('Calling: +91 800-123-4567','check');return false">📞 +91 800-123-4567</a></li>
+          <li><a href="#" onclick="showToast('Mon–Sat, 9 AM – 7 PM IST','check');return false">🕐 Mon–Sat, 9AM–7PM IST</a></li>
+          <li><a href="#" onclick="goReturns();return false">↩ Returns & Refunds</a></li>
+          <li><a href="#" onclick="showToast('Size: US Men sizes. Refer brand chart on product page.','check');return false">📏 Size Guide</a></li>
+          <li><a href="#" onclick="showToast('FAQs: support@kixverse.in or call us.','check');return false">❓ FAQs</a></li>
         </ul>
       </div>
       <div class="fc">
         <h4>Company</h4>
         <ul>
-          <li><a href="#" onclick="showToast('About section loaded.','check');return false">About Us</a></li>
-          <li><a href="#" onclick="showToast('Careers pipeline empty.','warn');return false">Careers</a></li>
-          <li><a href="#" onclick="showToast('Privacy details updated.','check');return false">Privacy Policy</a></li>
-          <li><a href="#" onclick="showToast('Terms framework active.','check');return false">Terms of Service</a></li>
+          <li><a href="#" onclick="showToast('kixVerse – India\'s premium sneaker marketplace, founded 2024 in Bengaluru.','check');return false">🏢 About kixVerse</a></li>
+          <li><a href="#" onclick="showToast('CIN: U52100KA2024PTC123456 | GST: 29AABCK1234A1Z5','check');return false">📋 Legal / GST Info</a></li>
+          <li><a href="#" onclick="showToast('We are hiring! Send CV to careers@kixverse.in','check');return false">💼 Careers</a></li>
+          <li><a href="#" onclick="showToast('Your data is safe. We never sell personal info.','check');return false">🔒 Privacy Policy</a></li>
+          <li><a href="#" onclick="showToast('By purchasing you agree to our Terms of Service.','check');return false">📄 Terms of Service</a></li>
+          <li><a href="#" onclick="showToast('Press & media: pr@kixverse.in','check');return false">📰 Press & Media</a></li>
         </ul>
       </div>
     </div>
@@ -627,6 +1136,7 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
   </div>
 </footer>
 
+<!-- Cart Drawer -->
 <div class="overlay" id="cartOverlay" onclick="toggleCart()"></div>
 <div class="drawer" id="cartDrawer">
   <div class="drawer-head">
@@ -642,6 +1152,7 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
   </div>
 </div>
 
+<!-- Search Modal -->
 <div class="search-modal" id="searchModal" onclick="toggleSearch()">
   <div class="search-box" onclick="event.stopPropagation()">
     <div class="search-input-row">
@@ -652,6 +1163,7 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
   </div>
 </div>
 
+<!-- Sign In Modal -->
 <div class="modal-bg" id="signInModal" onclick="closeSignInModal()">
   <div class="modal-box" onclick="event.stopPropagation()" style="position:relative">
     <button class="modal-close" onclick="closeSignInModal()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
@@ -662,7 +1174,12 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
       <button class="modal-tab" id="tabSignUp" onclick="setAuthTab('signup')">Create Account</button>
     </div>
     <div id="signUpFields" style="display:none">
-      <div class="form-group"><label>First Name</label><input type="text" id="suFirst" placeholder="John"/></div>
+      <div class="form-row">
+        <div class="form-group"><label>First Name</label><input type="text" id="suFirst" placeholder="Rahul"/></div>
+        <div class="form-group"><label>Last Name</label><input type="text" id="suLast" placeholder="Sharma"/></div>
+      </div>
+      <div class="form-group"><label>Mobile Number</label><input type="tel" id="suMobile" placeholder="+91 98765 43210"/></div>
+      <div class="form-group"><label>Date of Birth</label><input type="date" id="suDob"/></div>
     </div>
     <div class="form-group"><label>Email Address</label><input type="email" id="authEmail" placeholder="name@example.com"/></div>
     <div class="form-group"><label>Password</label><input type="password" id="authPass" placeholder="••••••••"/></div>
@@ -670,30 +1187,94 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
   </div>
 </div>
 
+<!-- Compare Bar -->
+<div class="compare-bar" id="compareBar">
+  <div class="compare-bar-inner">
+    <div>
+      <div class="cmp-bar-label">Compare Products</div>
+      <div class="cmp-bar-sub" id="cmpBarSub">Select up to 3 sneakers</div>
+    </div>
+    <div class="compare-slots" id="compareSlots"></div>
+    <button class="btn-compare-now" onclick="goComparePage()" id="btnCompareNow" disabled style="opacity:.5">Compare Now</button>
+    <button class="btn-clear-cmp" onclick="clearCompare()">Clear All</button>
+  </div>
+</div>
+
 <div class="toast" id="toastEl">
   <span id="toastIcon"></span>
-  <span id="toastMsg">Success message layout placeholder</span>
+  <span id="toastMsg">Success message</span>
 </div>
 
 <script>
-// ══ COMPREHENSIVE SNEAKER PRODUCTS RAW DATA ══
+// ══ PRODUCT DATA — 32 SNEAKERS ══
 const products = [
-  {id:1,brand:'Nike',name:'Air Max Alpha Run 5',price:130,oldPrice:165,cat:'Running',rating:4.8,revs:114,img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80',sizes:[8,8.5,9,9.5,10,10.5,11,12]},
-  {id:2,brand:'Adidas',name:'Ultraboost JetStream x',price:180,oldPrice:220,cat:'Running',rating:4.9,revs:92,img:'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80',sizes:[7,8,9,10,11]},
-  {id:3,brand:'Jordan',name:'Retro High Flight Elite',price:190,oldPrice:240,cat:'Basketball',rating:5.0,revs:341,img:'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500&q=80',sizes:[8,9,9.5,10,10.5,11,11.5,12,13]},
-  {id:4,brand:'Puma',name:'Clyde All-Pro Nitro',price:120,oldPrice:150,cat:'Basketball',rating:4.6,revs:58,img:'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80',sizes:[8,8.5,9,9.5,10,10.5,11]},
-  {id:5,brand:'New Balance',name:'990v6 Heritage Classic',price:200,oldPrice:200,cat:'Lifestyle',rating:4.9,revs:218,img:'https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80',sizes:[7,7.5,8,8.5,9,9.5,10,10.5,11,12,13]},
-  {id:6,brand:'Asics',name:'Gel-Kayano 30 Stability',price:160,oldPrice:180,cat:'Running',rating:4.7,revs:142,img:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80',sizes:[8,9,10,11]},
-  {id:7,brand:'Nike',name:'LeBron XX Trinity Force',price:210,oldPrice:210,cat:'Basketball',rating:4.8,revs:89,img:'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&q=80',sizes:[9,10,11,12,13]},
-  {id:8,brand:'Vans',name:'Old Skool Core Suede',price:70,oldPrice:85,cat:'Lifestyle',rating:4.5,revs:412,img:'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&q=80',sizes:[6,7,8,9,10,11,12]},
-  {id:9,brand:'Salomon',name:'XT-6 Advanced Trail Tech',price:190,oldPrice:220,cat:'Outdoor',rating:4.9,revs:73,img:'https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80',sizes:[8,8.5,9,9.5,10,10.5,11,11.5,12]},
-  {id:10,brand:'Under Armour',name:'Project Rock 6 Training',price:150,oldPrice:170,cat:'Training',rating:4.7,revs:61,img:'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80',sizes:[8,9,10,11,12]},
-  {id:11,brand:'Nike',name:'Air Force 1 Low Supreme',price:150,oldPrice:250,cat:'Limited',rating:5.0,revs:506,img:'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500&q=80',sizes:[8,9,10,11,12]},
-  {id:12,brand:'Adidas',name:'Yeezy Boost 350 v2 Core',price:230,oldPrice:320,cat:'Limited',rating:4.8,revs:813,img:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80',sizes:[7,8,9,10,11,12]}
+  // ── Running ──
+  {id:1,brand:'Nike',name:'Air Max Alpha Run 5',price:10920,oldPrice:13860,cat:'Running',rating:4.8,revs:114,img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80',sizes:[8,8.5,9,9.5,10,10.5,11,12],isNew:false,isHot:true},
+  {id:2,brand:'Adidas',name:'Ultraboost JetStream X',price:15120,oldPrice:18480,cat:'Running',rating:4.9,revs:92,img:'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80',sizes:[7,8,9,10,11],isNew:false,isHot:false},
+  {id:6,brand:'Asics',name:'Gel-Kayano 30 Stability',price:13440,oldPrice:15120,cat:'Running',rating:4.7,revs:142,img:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80',sizes:[8,9,10,11],isNew:false,isHot:false},
+  {id:13,brand:'Hoka',name:'Clifton 9 Cloud Cushion',price:12180,oldPrice:12180,cat:'Running',rating:4.9,revs:287,img:'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?w=500&q=80',sizes:[7,7.5,8,8.5,9,9.5,10,10.5,11,12],isNew:true,isHot:false},
+  {id:14,brand:'Brooks',name:'Ghost 16 Road Runner',price:11760,oldPrice:13020,cat:'Running',rating:4.8,revs:203,img:'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80',sizes:[8,8.5,9,9.5,10,10.5,11,11.5,12],isNew:false,isHot:false},
+  {id:15,brand:'On Running',name:'Cloudmonster 2 Surge',price:14700,oldPrice:14700,cat:'Running',rating:4.9,revs:156,img:'https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:true,isHot:false},
+  {id:16,brand:'Saucony',name:'Endorphin Pro 3 Speed',price:18900,oldPrice:21840,cat:'Running',rating:4.8,revs:78,img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80',sizes:[8,9,10,11,12],isNew:false,isHot:false},
+  {id:17,brand:'Nike',name:'Pegasus 41 React Shield',price:11340,oldPrice:11340,cat:'Running',rating:4.7,revs:332,img:'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80',sizes:[7,7.5,8,8.5,9,9.5,10,10.5,11,12,13],isNew:false,isHot:false},
+  // ── Basketball ──
+  {id:3,brand:'Jordan',name:'Retro High Flight Elite',price:15960,oldPrice:20160,cat:'Basketball',rating:5.0,revs:341,img:'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500&q=80',sizes:[8,9,9.5,10,10.5,11,11.5,12,13],isNew:false,isHot:true},
+  {id:4,brand:'Puma',name:'Clyde All-Pro Nitro',price:10080,oldPrice:12600,cat:'Basketball',rating:4.6,revs:58,img:'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80',sizes:[8,8.5,9,9.5,10,10.5,11],isNew:false,isHot:false},
+  {id:7,brand:'Nike',name:'LeBron XX Trinity Force',price:17640,oldPrice:17640,cat:'Basketball',rating:4.8,revs:89,img:'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&q=80',sizes:[9,10,11,12,13],isNew:false,isHot:false},
+  {id:18,brand:'Adidas',name:'Dame 9 Point Guard X',price:10920,oldPrice:13020,cat:'Basketball',rating:4.7,revs:67,img:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80',sizes:[8,8.5,9,9.5,10,10.5,11,12],isNew:true,isHot:false},
+  {id:19,brand:'Reebok',name:'Question Mid Answer',price:12180,oldPrice:15120,cat:'Basketball',rating:4.6,revs:102,img:'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500&q=80',sizes:[8,9,10,11,12,13],isNew:false,isHot:false},
+  // ── Lifestyle ──
+  {id:5,brand:'New Balance',name:'990v6 Heritage Classic',price:16800,oldPrice:16800,cat:'Lifestyle',rating:4.9,revs:218,img:'https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80',sizes:[7,7.5,8,8.5,9,9.5,10,10.5,11,12,13],isNew:false,isHot:false},
+  {id:8,brand:'Vans',name:'Old Skool Core Suede',price:5880,oldPrice:7140,cat:'Lifestyle',rating:4.5,revs:412,img:'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&q=80',sizes:[6,7,8,9,10,11,12],isNew:false,isHot:false},
+  {id:20,brand:'Converse',name:'Chuck 70 Plus Archive',price:7560,oldPrice:7560,cat:'Lifestyle',rating:4.6,revs:298,img:'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80',sizes:[6,7,8,9,10,11,12,13],isNew:false,isHot:false},
+  {id:21,brand:'New Balance',name:'550 Court White Green',price:9240,oldPrice:10920,cat:'Lifestyle',rating:4.8,revs:456,img:'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:false,isHot:true},
+  {id:22,brand:'Nike',name:'Dunk Low Retro Panda',price:9240,oldPrice:12600,cat:'Lifestyle',rating:4.9,revs:721,img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80',sizes:[6,7,8,9,10,11,12,13],isNew:false,isHot:true},
+  {id:23,brand:'Adidas',name:'Samba OG Classic White',price:8400,oldPrice:8400,cat:'Lifestyle',rating:4.8,revs:589,img:'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:false,isHot:false},
+  // ── Outdoor / Training ──
+  {id:9,brand:'Salomon',name:'XT-6 Advanced Trail Tech',price:15960,oldPrice:18480,cat:'Outdoor',rating:4.9,revs:73,img:'https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80',sizes:[8,8.5,9,9.5,10,10.5,11,11.5,12],isNew:false,isHot:false},
+  {id:10,brand:'Under Armour',name:'Project Rock 6 Training',price:12600,oldPrice:14280,cat:'Training',rating:4.7,revs:61,img:'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80',sizes:[8,9,10,11,12],isNew:false,isHot:false},
+  {id:24,brand:'Salomon',name:'Speedcross 6 GTX Hike',price:13860,oldPrice:15960,cat:'Outdoor',rating:4.8,revs:144,img:'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:true,isHot:false},
+  {id:25,brand:'Nike',name:'Metcon 9 CrossFit Beast',price:11760,oldPrice:13860,cat:'Training',rating:4.7,revs:88,img:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80',sizes:[7,8,9,10,11,12,13],isNew:false,isHot:false},
+  // ── Skateboarding ──
+  {id:26,brand:'Nike',name:'SB Dunk Pro Ishod',price:8820,oldPrice:10080,cat:'Skateboarding',rating:4.8,revs:192,img:'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:true,isHot:false},
+  {id:27,brand:'Vans',name:'Sk8-Hi Pro Vulcanized',price:6720,oldPrice:7980,cat:'Skateboarding',rating:4.7,revs:263,img:'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&q=80',sizes:[6,7,8,9,10,11,12],isNew:false,isHot:false},
+  {id:28,brand:'Converse',name:'CONS One Star Pro',price:6300,oldPrice:7560,cat:'Skateboarding',rating:4.5,revs:178,img:'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:false,isHot:false},
+  // ── Soccer ──
+  {id:29,brand:'Adidas',name:'Predator Elite FG Boots',price:23520,oldPrice:26880,cat:'Soccer',rating:4.9,revs:134,img:'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80',sizes:[7,7.5,8,8.5,9,9.5,10,10.5,11],isNew:false,isHot:false},
+  {id:30,brand:'Nike',name:'Mercurial Vapor 16 Elite',price:25200,oldPrice:25200,cat:'Soccer',rating:4.9,revs:97,img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80',sizes:[7,8,9,10,11],isNew:true,isHot:false},
+  // ── Tennis ──
+  {id:31,brand:'Nike',name:'Air Zoom Vapor Pro 2',price:11340,oldPrice:13020,cat:'Tennis',rating:4.8,revs:89,img:'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:false,isHot:false},
+  {id:32,brand:'Adidas',name:'Barricade 13 Hardcourt',price:12180,oldPrice:14280,cat:'Tennis',rating:4.7,revs:62,img:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:true,isHot:false},
+  // ── Limited Edition ──
+  {id:11,brand:'Nike',name:'Air Force 1 Low Supreme',price:12600,oldPrice:21000,cat:'Limited',rating:5.0,revs:506,img:'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500&q=80',sizes:[8,9,10,11,12],isNew:false,isHot:true},
+  {id:12,brand:'Adidas',name:'Yeezy Boost 350 V2 Core',price:19320,oldPrice:26880,cat:'Limited',rating:4.8,revs:813,img:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:false,isHot:true},
+  // ── 6 New Additions ──
+  {id:33,brand:'Nike',name:'Air Jordan 1 Retro High OG',price:14700,oldPrice:18900,cat:'Basketball',rating:4.9,revs:634,img:'https://images.unsplash.com/photo-1600185365483-26d7a4cc7519?w=500&q=80',sizes:[7,8,9,10,11,12,13],isNew:true,isHot:true},
+  {id:34,brand:'Adidas',name:'Forum Low Classic White',price:7560,oldPrice:9240,cat:'Lifestyle',rating:4.7,revs:289,img:'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&q=80',sizes:[6,7,8,9,10,11,12],isNew:false,isHot:false},
+  {id:35,brand:'Puma',name:'RS-X3 Neon Flash Street',price:8400,oldPrice:10500,cat:'Lifestyle',rating:4.6,revs:167,img:'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:true,isHot:false},
+  {id:36,brand:'New Balance',name:'2002R Protection Pack',price:13440,oldPrice:16800,cat:'Running',rating:4.8,revs:412,img:'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?w=500&q=80',sizes:[7,7.5,8,8.5,9,9.5,10,10.5,11,12],isNew:true,isHot:true},
+  {id:37,brand:'Reebok',name:'Classic Leather Legacy AZ',price:6720,oldPrice:8400,cat:'Lifestyle',rating:4.5,revs:198,img:'https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:false,isHot:false},
+  {id:38,brand:'Under Armour',name:'HOVR Phantom 3 Storm',price:11340,oldPrice:13440,cat:'Running',rating:4.7,revs:143,img:'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80',sizes:[8,8.5,9,9.5,10,10.5,11,12],isNew:true,isHot:false},
 ];
 
-// STATE MANAGEMENT
+// ── Fake review data ──
+const reviewsData = {
+  default: [
+    {name:'Jordan M.',avatar:'JM',rating:5,date:'June 2026',text:'Absolutely love these! Super comfortable from day one, no break-in needed. The build quality is exceptional and they look even better in person.',verified:true},
+    {name:'Sarah K.',avatar:'SK',rating:4,date:'May 2026',text:'Great shoes, true to size. The cushioning is fantastic for long runs. Only minor issue is they run slightly warm.',verified:true},
+    {name:'Raj P.',avatar:'RP',rating:5,date:'May 2026',text:'Best sneakers I\'ve owned. Delivered in 2 days, packaging was perfect. Will definitely order again!',verified:true},
+    {name:'Alex T.',avatar:'AT',rating:4,date:'April 2026',text:'Very stylish and well-constructed. A bit pricey but you get what you pay for. Highly recommend.',verified:false},
+  ]
+};
+
+// ── INR formatter ──
+function inr(n){ return '₹' + Number(n).toLocaleString('en-IN'); }
+
+// STATE
 let cart = [];
+let orders = [];
+let wishlist = new Set();
+let compareList = [];
 let currentProduct = null;
 let selectedSize = null;
 let currentQty = 1;
@@ -702,19 +1283,22 @@ let paymentMethod = "card";
 let authMode = "signin";
 let loggedIn = false;
 let userName = "";
+let activeMaxPrice = 42000;
+let activeSort = "default";
+let activeBrand = "All";
 
-// INITIALIZATION
+// ══ INIT ══
 window.addEventListener('DOMContentLoaded', () => {
   renderProductGrid();
   renderRecommendedSlider();
+  renderCompareSlots();
   setupEventListeners();
+  document.getElementById('priceRange').max = 42000;
 });
 
 function setupEventListeners() {
   document.getElementById('cartBtn').addEventListener('click', toggleCart);
   document.getElementById('searchBtn').addEventListener('click', toggleSearch);
-  
-  // Categories filtering framework
   const chips = document.querySelectorAll('#catChips .cat');
   chips.forEach(chip => {
     chip.addEventListener('click', (e) => {
@@ -723,40 +1307,41 @@ function setupEventListeners() {
       showCat(e.target.getAttribute('data-cat'));
     });
   });
-
-  // Recommended slider navigation logic
   document.getElementById('prevBtn').addEventListener('click', () => {
     document.getElementById('recTrack').scrollLeft -= 260;
   });
   document.getElementById('nextBtn').addEventListener('click', () => {
     document.getElementById('recTrack').scrollLeft += 260;
   });
-
-  // Auth routing navigation
   document.getElementById('signInNavBtn').addEventListener('click', () => {
-    if(loggedIn){
-      showToast('You are logged in as ' + userName, 'check');
-    } else {
-      openSignInModal();
-    }
+    if(loggedIn){ showToast('Welcome back, ' + userName + '! 👋', 'check'); setTimeout(()=>goOrders(),800); return; }
+    else openSignInModal();
   });
 }
 
-// ══ ROUTING ENGINE ══
+// ══ ROUTING ══
 function switchPage(pageId) {
   document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
   document.getElementById(pageId).classList.add('active');
   window.scrollTo(0,0);
-  
-  // Navbar active navigation state highlight framework
   const links = document.querySelectorAll('.nav-links a');
   links.forEach(l => l.classList.remove('active'));
-  if(pageId === 'pageHome' && currentCatFilter === 'All') links[0].classList.add('active');
+  if(pageId === 'pageHome') links[0].classList.add('active');
+  if(pageId === 'pageWishlist') links[4].classList.add('active');
+  if(pageId === 'pageOrders') links[5] && links[5].classList.add('active');
+  if(pageId === 'pageTrack') links[6] && links[6].classList.add('active');
 }
 
 function goHome() {
   currentCatFilter = "All";
-  document.getElementById('prodTitle').textContent = "Products";
+  activeSort = "default";
+  activeBrand = "All";
+  activeMaxPrice = 42000;
+  document.getElementById('sortSelect').value = "default";
+  document.getElementById('brandSelect').value = "All";
+  document.getElementById('priceRange').value = 42000;
+  document.getElementById('priceLabel').textContent = "₹42,000";
+  document.getElementById('prodTitle').textContent = "All Sneakers";
   document.getElementById('viewAllBtn').style.display = "none";
   const chips = document.querySelectorAll('#catChips .cat');
   chips.forEach(c => {
@@ -769,71 +1354,89 @@ function goHome() {
 
 function showCat(catName) {
   currentCatFilter = catName;
-  document.getElementById('prodTitle').textContent = catName + " Sneakers";
+  document.getElementById('prodTitle').textContent = catName === "All" ? "All Sneakers" : catName + " Sneakers";
   document.getElementById('viewAllBtn').style.display = catName === "All" ? "none" : "inline-block";
-  
-  // Synchronize category display chips active highlight states
   const chips = document.querySelectorAll('#catChips .cat');
   chips.forEach(c => {
     c.classList.remove('active');
     if(c.getAttribute('data-cat') === catName) c.classList.add('active');
   });
-  
-  // Dynamic application navigation link matching highlight engine
   const links = document.querySelectorAll('.nav-links a');
   links.forEach(l => l.classList.remove('active'));
   if(catName === 'Running') links[1].classList.add('active');
   if(catName === 'Basketball') links[2].classList.add('active');
   if(catName === 'Lifestyle') links[3].classList.add('active');
-
   renderProductGrid();
   switchPage('pageHome');
   scrollToProducts();
 }
 
-function resetCatFilter() {
-  goHome();
-}
-
+function resetCatFilter() { goHome(); }
 function scrollToProducts() {
   document.getElementById('productsAnchor').scrollIntoView({ behavior: 'smooth' });
 }
 
-// ══ RENDER ARCHITECTURE ══
+// ══ FILTER & SORT ══
+function applyFilters() {
+  activeMaxPrice = parseInt(document.getElementById('priceRange').value);
+  activeSort = document.getElementById('sortSelect').value;
+  activeBrand = document.getElementById('brandSelect').value;
+  document.getElementById('priceLabel').textContent = '₹' + activeMaxPrice.toLocaleString('en-IN');
+  renderProductGrid();
+}
+
+function getFilteredSorted() {
+  let list = currentCatFilter === "All" ? [...products] : products.filter(p => p.cat === currentCatFilter);
+  if(activeBrand !== "All") list = list.filter(p => p.brand === activeBrand);
+  list = list.filter(p => p.price <= activeMaxPrice);
+  if(activeSort === 'price-asc') list.sort((a,b) => a.price - b.price);
+  else if(activeSort === 'price-desc') list.sort((a,b) => b.price - a.price);
+  else if(activeSort === 'rating') list.sort((a,b) => b.rating - a.rating);
+  else if(activeSort === 'discount') list.sort((a,b) => (b.oldPrice-b.price)/b.oldPrice - (a.oldPrice-a.price)/a.oldPrice);
+  else if(activeSort === 'newest') list.sort((a,b) => (b.isNew?1:0) - (a.isNew?1:0));
+  return list;
+}
+
+// ══ RENDER PRODUCT GRID ══
 function renderProductGrid() {
   const container = document.getElementById('productGrid');
   container.innerHTML = '';
-  
-  const filtered = currentCatFilter === "All" ? products : products.filter(p => p.cat === currentCatFilter);
-  
+  const filtered = getFilteredSorted();
+  document.getElementById('filterResults').textContent = filtered.length + ' sneakers found';
   if(filtered.length === 0) {
-    container.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:40px;color:var(--sub)">No shoes found in this pipeline section.</div>';
+    container.innerHTML = '<div style="grid-column:1/-1;text-align:center;padding:60px 20px;color:var(--sub)"><div style="font-size:40px;margin-bottom:12px">👟</div><div style="font-size:16px;font-weight:700">No sneakers match your filters</div><div style="font-size:13px;margin-top:6px">Try adjusting the price range or brand filter</div></div>';
     return;
   }
-
   filtered.forEach(p => {
     const card = document.createElement('div');
     card.className = 'pcard';
     card.onclick = () => viewDetails(p.id);
-    
     const disc = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
     const discBadge = disc > 0 ? `<span class="p-disc">-${disc}%</span>` : '';
-    const oldPriceStr = disc > 0 ? `<span class="p-old">$${p.oldPrice}</span>` : '';
-
+    const oldPriceStr = disc > 0 ? `<span class="p-old">${inr(p.oldPrice)}</span>` : '';
+    const tagHtml = p.isNew ? '<span class="new-tag">NEW</span>' : (p.isHot ? '<span class="hot-tag">HOT</span>' : '');
+    const isWishlisted = wishlist.has(p.id);
+    const inCompare = compareList.some(x => x.id === p.id);
+    // Mini stars
+    let starsHtml = '';
+    for(let i=0;i<5;i++) starsHtml += `<svg viewBox="0 0 24 24" class="${i < Math.floor(p.rating) ? 'mini-star' : 'mini-star-e'}"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
     card.innerHTML = `
       <div class="pcard-img">
+        ${tagHtml}
         <img src="${p.img}" alt="${p.name}"/>
-        <button class="wish-btn" onclick="toggleWishlist(event, this)"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        <button class="wish-btn ${isWishlisted?'liked':''}" onclick="toggleWishlist(event,this,${p.id})"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button>
+        <button class="compare-btn ${inCompare?'active':''}" title="Compare" onclick="toggleCompare(event,this,${p.id})"><svg viewBox="0 0 24 24"><polyline points="16 3 21 3 21 8"/><line x1="4" y1="20" x2="21" y2="3"/><polyline points="21 16 21 21 16 21"/><line x1="4" y1="4" x2="9" y2="9"/></svg></button>
       </div>
       <div class="pcard-info">
         <div class="pcard-brand">${p.brand}</div>
         <div class="pcard-name">${p.name}</div>
+        <div class="pcard-stars">${starsHtml}<span>${p.rating} (${p.revs})</span></div>
         <div class="pcard-price">
-          <span class="p-sale">$${p.price}</span>
+          <span class="p-sale">${inr(p.price)}</span>
           ${oldPriceStr}
           ${discBadge}
         </div>
-        <button class="btn-add" onclick="quickAdd(event, ${p.id})">
+        <button class="btn-add" onclick="quickAdd(event,${p.id})">
           <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>
           Add to Cart
         </button>
@@ -846,10 +1449,7 @@ function renderProductGrid() {
 function renderRecommendedSlider() {
   const container = document.getElementById('recTrack');
   container.innerHTML = '';
-  
-  // Choose random subset or special premium items from base array catalog
-  const recs = [...products].sort(() => 0.5 - Math.random()).slice(0, 7);
-  
+  const recs = [...products].sort(() => 0.5 - Math.random()).slice(0, 10);
   recs.forEach(p => {
     const card = document.createElement('div');
     card.className = 'rec-card';
@@ -860,58 +1460,49 @@ function renderRecommendedSlider() {
   });
 }
 
-// ══ PRODUCT DETAILS VIEW ENGINE ══
+// ══ PRODUCT DETAIL ══
 function viewDetails(productId) {
   const p = products.find(x => x.id === productId);
   if(!p) return;
   currentProduct = p;
   selectedSize = p.sizes[0];
   currentQty = 1;
-
   document.getElementById('bcCat').textContent = p.cat;
   document.getElementById('bcCat').onclick = () => showCat(p.cat);
   document.getElementById('bcName').textContent = p.name;
-  
   document.getElementById('dBrand').textContent = p.brand;
   document.getElementById('dName').textContent = p.name;
   document.getElementById('mainImg').src = p.img;
-  
-  document.getElementById('dSale').textContent = `$${p.price}`;
+  document.getElementById('dSale').textContent = inr(p.price);
   const disc = Math.round(((p.oldPrice - p.price) / p.oldPrice) * 100);
   if(disc > 0) {
     document.getElementById('dOld').style.display = 'inline';
-    document.getElementById('dOld').textContent = `$${p.oldPrice}`;
+    document.getElementById('dOld').textContent = inr(p.oldPrice);
     document.getElementById('dSave').style.display = 'inline';
     document.getElementById('dSave').textContent = `Save ${disc}%`;
   } else {
     document.getElementById('dOld').style.display = 'none';
     document.getElementById('dSave').style.display = 'none';
   }
-
-  // Draw rating system stars module output elements grid
   const starContainer = document.getElementById('dStars');
   starContainer.innerHTML = '';
   const fullStars = Math.floor(p.rating);
-  for(let i=0; i<5; i++) {
+  for(let i=0;i<5;i++){
     const star = document.createElement('svg');
-    star.setAttribute('viewBox', '0 0 24 24');
+    star.setAttribute('viewBox','0 0 24 24');
     star.className = i < fullStars ? 'star' : 'star-e';
     star.innerHTML = '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>';
     starContainer.appendChild(star);
   }
   document.getElementById('dRatingText').textContent = `(${p.rating} / 5.0 from ${p.revs} reviews)`;
-
-  // Render selection buttons grid sequence metric array options
   const sizeWrap = document.getElementById('dSizes');
   sizeWrap.innerHTML = '';
-  
-  // Standard sizing allocation display build framework mapping
-  const standardSizes = [7, 7.5, 8, 8.5, 9, 9.5, 10, 10.5, 11, 11.5, 12, 13];
+  const standardSizes = [7,7.5,8,8.5,9,9.5,10,10.5,11,11.5,12,13];
   standardSizes.forEach(sz => {
     const btn = document.createElement('button');
     btn.className = 'size-btn';
     btn.textContent = sz;
-    if(p.sizes.includes(sz)) {
+    if(p.sizes.includes(sz)){
       if(sz === selectedSize) btn.classList.add('active');
       btn.onclick = () => {
         document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('active'));
@@ -924,14 +1515,12 @@ function viewDetails(productId) {
     }
     sizeWrap.appendChild(btn);
   });
-
-  // Render primary thumbnails strip
   const thumbCol = document.getElementById('thumbCol');
   thumbCol.innerHTML = '';
-  const assetPool = [p.img, 'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80', 'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80'];
-  assetPool.forEach((imgUrl, idx) => {
+  const assetPool = [p.img,'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80','https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80'];
+  assetPool.forEach((imgUrl,idx) => {
     const th = document.createElement('div');
-    th.className = idx === 0 ? 'thumb active' : 'thumb';
+    th.className = idx===0?'thumb active':'thumb';
     th.innerHTML = `<img src="${imgUrl}"/>`;
     th.onclick = () => {
       document.querySelectorAll('.thumb').forEach(t => t.classList.remove('active'));
@@ -940,232 +1529,410 @@ function viewDetails(productId) {
     };
     thumbCol.appendChild(th);
   });
-
   document.getElementById('qtyInput').value = 1;
+  renderReviews(p);
   switchPage('pageDetail');
 }
 
-function changeQty(amt) {
+function changeQty(amt){
   currentQty = Math.max(1, currentQty + amt);
   document.getElementById('qtyInput').value = currentQty;
 }
 
-// ══ CORE CART CORE LOGIC ACTIONS ENGINE ══
-function toggleCart() {
-  document.getElementById('cartOverlay').classList.toggle('open');
-  document.getElementById('cartDrawer').classList.toggle('open');
-  if(document.getElementById('cartDrawer').classList.contains('open')) {
-    renderCart();
+// ══ REVIEWS ══
+function renderReviews(p) {
+  // Big score
+  document.getElementById('revBigNum').textContent = p.rating.toFixed(1);
+  document.getElementById('revBigCount').textContent = p.revs + ' verified reviews';
+  const bigStars = document.getElementById('revBigStars');
+  bigStars.innerHTML = '';
+  for(let i=0;i<5;i++){
+    const s = document.createElementNS('http://www.w3.org/2000/svg','svg');
+    s.setAttribute('viewBox','0 0 24 24');
+    s.setAttribute('class','big-star');
+    s.innerHTML = '<polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/>';
+    bigStars.appendChild(s);
   }
+  // Rating bars
+  const bars = document.getElementById('revBars');
+  bars.innerHTML = '';
+  const distribution = [
+    {stars:5, pct: Math.round(p.rating * 15)},
+    {stars:4, pct: Math.round((5 - p.rating) * 40 + 10)},
+    {stars:3, pct: Math.max(0,100 - Math.round(p.rating * 15) - Math.round((5 - p.rating) * 40 + 10) - 5 - 2)},
+    {stars:2, pct: 5},
+    {stars:1, pct: 2},
+  ];
+  distribution.forEach(d => {
+    bars.innerHTML += `<div class="rbar-row"><span class="rbar-label">${d.stars}★</span><div class="rbar-track"><div class="rbar-fill" style="width:${d.pct}%"></div></div><span class="rbar-count">${d.pct}%</span></div>`;
+  });
+  // Review list
+  const list = document.getElementById('reviewList');
+  list.innerHTML = '';
+  const revs = reviewsData.default;
+  revs.forEach(r => {
+    let starsH = '';
+    for(let i=0;i<5;i++) starsH += `<svg viewBox="0 0 24 24" class="rev-star" style="fill:${i<r.rating?'var(--yellow)':'var(--border)'}"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+    const verifiedHtml = r.verified ? `<div class="review-verified"><svg viewBox="0 0 24 24" style="width:12px;height:12px;stroke:var(--green);fill:none;stroke-width:2.5"><polyline points="20 6 9 17 4 12"/></svg>Verified Purchase</div>` : '';
+    list.innerHTML += `<div class="review-item"><div class="review-header"><div class="review-avatar">${r.avatar}</div><div class="review-meta"><h4>${r.name}</h4><p>${r.date}</p></div><div class="review-stars">${starsH}</div></div><div class="review-body">${r.text}</div>${verifiedHtml}</div>`;
+  });
 }
 
-function quickAdd(event, productId) {
+// ══ CART ══
+function toggleCart(){
+  document.getElementById('cartOverlay').classList.toggle('open');
+  document.getElementById('cartDrawer').classList.toggle('open');
+  if(document.getElementById('cartDrawer').classList.contains('open')) renderCart();
+}
+
+function quickAdd(event, productId){
   event.stopPropagation();
   const p = products.find(x => x.id === productId);
   if(!p) return;
-  
-  // Auto assign first available stock sizing option
   const size = p.sizes[0] || 9;
   addToCartInternal(p, size, 1);
   showToast(`Added ${p.name} (Size ${size}) to cart! 👟`, 'check');
 }
 
-function addCurrentToCart() {
+function addCurrentToCart(){
   if(!currentProduct) return;
   addToCartInternal(currentProduct, selectedSize, currentQty);
   toggleCart();
 }
 
-function addToCartInternal(product, size, qty) {
-  const existing = cart.find(item => item.id === product.id && item.size === size);
-  if(existing) {
-    existing.qty += qty;
-  } else {
-    cart.push({
-      id: product.id,
-      brand: product.brand,
-      name: product.name,
-      price: product.price,
-      img: product.img,
-      size: size,
-      qty: qty
-    });
+function buyNow(){
+  if(!currentProduct) return;
+  if(!loggedIn){ 
+    showToast('Please sign in to continue','warn');
+    openSignInModal();
+    return;
   }
+  addToCartInternal(currentProduct, selectedSize, currentQty);
+  goCheckout();
+}
+
+function addToCartInternal(product, size, qty){
+  const existing = cart.find(item => item.id === product.id && item.size === size);
+  if(existing) existing.qty += qty;
+  else cart.push({id:product.id,brand:product.brand,name:product.name,price:product.price,img:product.img,size:size,qty:qty});
   updateCartBadges();
 }
 
-function updateCartBadges() {
-  const count = cart.reduce((acc, x) => acc + x.qty, 0);
+function updateCartBadges(){
+  const count = cart.reduce((acc,x) => acc+x.qty, 0);
   document.getElementById('cartBadge').textContent = count;
 }
 
-function alterCartItemQty(index, amt) {
+function alterCartItemQty(index, amt){
   cart[index].qty += amt;
-  if(cart[index].qty <= 0) {
-    cart.splice(index, 1);
-  }
+  if(cart[index].qty <= 0) cart.splice(index,1);
   updateCartBadges();
   renderCart();
 }
 
-function removeCartItem(index) {
-  cart.splice(index, 1);
+function removeCartItem(index){
+  cart.splice(index,1);
   updateCartBadges();
   renderCart();
 }
 
-function renderCart() {
+function renderCart(){
   const body = document.getElementById('cartBody');
   const foot = document.getElementById('cartFoot');
   body.innerHTML = '';
-
-  if(cart.length === 0) {
-    body.innerHTML = `
-      <div class="cart-empty-state">
-        <svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg>
-        <p>Your shopping cart workspace parameters are empty.<br>Go pick up some fresh modern pairs!</p>
-      </div>
-    `;
+  if(cart.length === 0){
+    body.innerHTML = `<div class="cart-empty-state"><svg viewBox="0 0 24 24"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><p>Your cart is empty.<br>Go pick up some fresh pairs!</p></div>`;
     foot.style.display = 'none';
     return;
   }
-
   foot.style.display = 'block';
   let totalSum = 0;
-
-  cart.forEach((item, index) => {
+  cart.forEach((item,index) => {
     totalSum += item.price * item.qty;
     const row = document.createElement('div');
     row.className = 'cart-item';
-    row.innerHTML = `
-      <div class="ci-img"><img src="${item.img}"/></div>
-      <div class="ci-info">
-        <h4>${item.name}</h4>
-        <div class="ci-meta">US Men Size: ${item.size} | Brand: ${item.brand}</div>
-        <div class="ci-bottom">
-          <div class="ci-qty">
-            <button class="cq-btn" onclick="alterCartItemQty(${index}, -1)">−</button>
-            <span class="cq-val">${item.qty}</span>
-            <button class="cq-btn" onclick="alterCartItemQty(${index}, 1)">+</button>
-          </div>
-          <div class="ci-price">$${item.price * item.qty}</div>
-        </div>
-      </div>
-      <button class="ci-remove" title="Remove row item" onclick="removeCartItem(${index})">
-        <svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg>
-      </button>
-    `;
+    row.innerHTML = `<div class="ci-img"><img src="${item.img}"/></div><div class="ci-info"><h4>${item.name}</h4><div class="ci-meta">US Men Size: ${item.size} | ${item.brand}</div><div class="ci-bottom"><div class="ci-qty"><button class="cq-btn" onclick="alterCartItemQty(${index},-1)">−</button><span class="cq-val">${item.qty}</span><button class="cq-btn" onclick="alterCartItemQty(${index},1)">+</button></div><div class="ci-price">${inr(item.price * item.qty)}</div></div></div><button class="ci-remove" onclick="removeCartItem(${index})"><svg viewBox="0 0 24 24"><polyline points="3 6 5 6 21 6"/><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"/></svg></button>`;
     body.appendChild(row);
   });
-
-  document.getElementById('cartSubtotal').textContent = `$${totalSum.toFixed(2)}`;
-  
-  if(totalSum >= 150) {
-    document.getElementById('freeShipMsg').textContent = "Your order qualifies for Free Shipping! 🎉";
+  document.getElementById('cartSubtotal').textContent = inr(totalSum);
+  if(totalSum >= 12600){
+    document.getElementById('freeShipMsg').textContent = "You qualify for Free Shipping! 🎉";
     document.getElementById('freeShipMsg').style.color = "var(--green)";
   } else {
-    const diff = 150 - totalSum;
-    document.getElementById('freeShipMsg').textContent = `Add $${diff.toFixed(2)} more to unlock Free Shipping.`;
+    document.getElementById('freeShipMsg').textContent = `Add ${inr(12600-totalSum)} more for Free Shipping.`;
     document.getElementById('freeShipMsg').style.color = "var(--sub)";
   }
 }
 
-// ══ CHECKOUT MANAGEMENT ══
-function goCheckout() {
+// ══ WISHLIST ══
+function toggleWishlist(event, element, productId){
+  event.stopPropagation();
+  if(wishlist.has(productId)){
+    wishlist.delete(productId);
+    element.classList.remove('liked');
+    showToast('Removed from wishlist.','check');
+  } else {
+    wishlist.add(productId);
+    element.classList.add('liked');
+    showToast('Added to wishlist! ♡','heart');
+  }
+  updateWishBadge();
+}
+
+function updateWishBadge(){
+  const badge = document.getElementById('wishBadge');
+  badge.textContent = wishlist.size;
+  badge.style.display = wishlist.size > 0 ? 'grid' : 'none';
+}
+
+function goWishlist(){
+  renderWishlistPage();
+  switchPage('pageWishlist');
+}
+
+function renderWishlistPage(){
+  const content = document.getElementById('wishlistContent');
+  const subtitle = document.getElementById('wishSubtitle');
+  if(wishlist.size === 0){
+    subtitle.textContent = '0 items saved';
+    content.innerHTML = `<div class="wish-empty"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg><h3>Your wishlist is empty</h3><p>Heart any sneaker to save it here for later.</p><button class="btn-wishlist-shop" onclick="goHome()">Browse Sneakers</button></div>`;
+    return;
+  }
+  const items = products.filter(p => wishlist.has(p.id));
+  subtitle.textContent = items.length + (items.length===1?' item':' items') + ' saved';
+  content.innerHTML = '';
+  const grid = document.createElement('div');
+  grid.className = 'wishlist-grid';
+  items.forEach(p => {
+    const disc = Math.round(((p.oldPrice-p.price)/p.oldPrice)*100);
+    const discBadge = disc>0?`<span class="p-disc">-${disc}%</span>`:'';
+    const oldPriceStr = disc>0?`<span class="p-old">${inr(p.oldPrice)}</span>`:'';
+    let starsHtml = '';
+    for(let i=0;i<5;i++) starsHtml += `<svg viewBox="0 0 24 24" class="${i<Math.floor(p.rating)?'mini-star':'mini-star-e'}"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;
+    const card = document.createElement('div');
+    card.className = 'pcard';
+    card.onclick = () => viewDetails(p.id);
+    card.innerHTML = `<div class="pcard-img"><img src="${p.img}" alt="${p.name}"/><button class="wish-btn liked" onclick="toggleWishlist(event,this,${p.id});renderWishlistPage()"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></button></div><div class="pcard-info"><div class="pcard-brand">${p.brand}</div><div class="pcard-name">${p.name}</div><div class="pcard-stars">${starsHtml}<span>${p.rating}</span></div><div class="pcard-price"><span class="p-sale">${inr(p.price)}</span>${oldPriceStr}${discBadge}</div><button class="btn-add" onclick="quickAdd(event,${p.id})"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/></svg>Add to Cart</button></div>`;
+    grid.appendChild(card);
+  });
+  content.appendChild(grid);
+}
+
+// ══ COMPARE ══
+function toggleCompare(event, element, productId){
+  event.stopPropagation();
+  const p = products.find(x => x.id === productId);
+  if(!p) return;
+  const idx = compareList.findIndex(x => x.id === productId);
+  if(idx > -1){
+    compareList.splice(idx,1);
+    element.classList.remove('active');
+    showToast('Removed from comparison.','check');
+  } else {
+    if(compareList.length >= 3){
+      showToast('You can compare up to 3 sneakers at a time.','warn');
+      return;
+    }
+    compareList.push(p);
+    element.classList.add('active');
+    showToast(`${p.name} added to compare!`,'check');
+  }
+  renderCompareSlots();
+  updateCompareBar();
+}
+
+function renderCompareSlots(){
+  const slots = document.getElementById('compareSlots');
+  slots.innerHTML = '';
+  for(let i=0;i<3;i++){
+    const slot = document.createElement('div');
+    if(i < compareList.length){
+      slot.className = 'cmp-slot filled';
+      slot.innerHTML = `<img src="${compareList[i].img}" alt="${compareList[i].name}"/><button class="cmp-remove" onclick="removeCompareItem(${i})">×</button>`;
+    } else {
+      slot.className = 'cmp-slot';
+      slot.textContent = 'Add a shoe';
+    }
+    slots.appendChild(slot);
+  }
+}
+
+function removeCompareItem(i){
+  compareList.splice(i,1);
+  renderCompareSlots();
+  updateCompareBar();
+  renderProductGrid();
+}
+
+function updateCompareBar(){
+  const bar = document.getElementById('compareBar');
+  const btn = document.getElementById('btnCompareNow');
+  const sub = document.getElementById('cmpBarSub');
+  if(compareList.length > 0){
+    bar.classList.add('visible');
+    sub.textContent = compareList.length + ' of 3 selected';
+    if(compareList.length >= 2){
+      btn.disabled = false;
+      btn.style.opacity = '1';
+    } else {
+      btn.disabled = true;
+      btn.style.opacity = '.5';
+    }
+  } else {
+    bar.classList.remove('visible');
+  }
+}
+
+function clearCompare(){
+  compareList = [];
+  renderCompareSlots();
+  updateCompareBar();
+  renderProductGrid();
+}
+
+function goComparePage(){
+  if(compareList.length < 2) return;
+  renderCompareTable();
+  switchPage('pageCompare');
+}
+
+function renderCompareTable(){
+  const wrap = document.getElementById('compareTableWrap');
+  const fields = [
+    {label:'Price',key:'price',fmt:p=>`<span style="font-size:18px;font-weight:800;color:var(--brand)">${inr(p.price)}</span>`},
+    {label:'Original Price',key:'oldPrice',fmt:p=>inr(p.oldPrice)},
+    {label:'Discount',key:'disc',fmt:p=>{const d=Math.round(((p.oldPrice-p.price)/p.oldPrice)*100);return d>0?`<span class="cmp-highlight">-${d}%</span>`:'No discount'}},
+    {label:'Category',key:'cat',fmt:p=>p.cat},
+    {label:'Rating',key:'rating',fmt:p=>{let s='<div class="cmp-stars">';for(let i=0;i<5;i++)s+=`<svg viewBox="0 0 24 24" style="width:14px;height:14px;fill:${i<Math.floor(p.rating)?'var(--yellow)':'var(--border)'}"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>`;s+=`</div><div style="font-size:12px;margin-top:2px">${p.rating}/5 (${p.revs} reviews)</div>`;return s}},
+    {label:'Available Sizes',key:'sizes',fmt:p=>p.sizes.join(', ')},
+    {label:'New Arrival',key:'isNew',fmt:p=>p.isNew?'<span class="cmp-highlight">✓ Yes</span>':'No'},
+    {label:'Hot Pick',key:'isHot',fmt:p=>p.isHot?'<span class="cmp-highlight">🔥 Yes</span>':'No'},
+  ];
+  let html = '<table class="compare-table"><thead><tr><th>Feature</th>';
+  compareList.forEach(p => {
+    html += `<th><div class="cmp-prod-img"><img src="${p.img}" alt="${p.name}"/></div><div style="font-size:11px;color:var(--muted);text-transform:uppercase;margin-bottom:4px">${p.brand}</div><div style="font-size:14px;font-weight:800">${p.name}</div></th>`;
+  });
+  html += '</tr></thead><tbody>';
+  fields.forEach(f => {
+    html += `<tr><td>${f.label}</td>`;
+    compareList.forEach(p => { html += `<td>${f.fmt(p)}</td>`; });
+    html += '</tr>';
+  });
+  // Add to cart row
+  html += '<tr><td>Action</td>';
+  compareList.forEach(p => {
+    html += `<td><button onclick="quickAdd(event,${p.id})" style="padding:10px 16px;background:var(--brand);color:#fff;border:none;border-radius:var(--rs);font-size:13px;font-weight:600;cursor:pointer">Add to Cart</button></td>`;
+  });
+  html += '</tr>';
+  html += '</tbody></table>';
+  wrap.innerHTML = html;
+}
+
+// ══ CHECKOUT ══
+function goCheckout(){
   if(cart.length === 0) return;
+  if(!loggedIn){
+    toggleCart();
+    showToast('Please sign in or create an account to checkout','warn');
+    openSignInModal();
+    return;
+  }
   toggleCart();
-  
   const container = document.getElementById('summaryItems');
   container.innerHTML = '';
   let subtotal = 0;
-
   cart.forEach(item => {
     subtotal += item.price * item.qty;
     const div = document.createElement('div');
     div.className = 'os-item';
-    div.innerHTML = `
-      <div class="os-img"><img src="${item.img}"/></div>
-      <div class="os-info">
-        <h4>${item.name}</h4>
-        <p>Size: ${item.size} | Qty: ${item.qty}</p>
-      </div>
-      <div class="os-price">$${item.price * item.qty}</div>
-    `;
+    div.innerHTML = `<div class="os-img"><img src="${item.img}"/></div><div class="os-info"><h4>${item.name}</h4><p>Size: ${item.size} | Qty: ${item.qty}</p></div><div class="os-price">${inr(item.price * item.qty)}</div>`;
     container.appendChild(div);
   });
-
-  const shippingCost = subtotal >= 150 ? 0 : 15;
+  const shippingCost = subtotal >= 12600 ? 0 : 200;
   const finalTotal = subtotal + shippingCost;
-
-  document.getElementById('osSub').textContent = `$${subtotal.toFixed(2)}`;
-  document.getElementById('osShip').textContent = shippingCost === 0 ? "Free" : `$${shippingCost.toFixed(2)}`;
-  document.getElementById('osTotal').textContent = `$${finalTotal.toFixed(2)}`;
-
+  document.getElementById('osSub').textContent = inr(subtotal);
+  document.getElementById('osShip').textContent = shippingCost === 0 ? 'Free' : inr(shippingCost);
+  document.getElementById('osTotal').textContent = inr(finalTotal);
   switchPage('pageCheckout');
 }
 
-function setPayment(type) {
+function setPayment(type){
   paymentMethod = type;
   const opts = document.querySelectorAll('.pay-opt');
   const cardF = document.getElementById('cardFields');
-  
+  const upiF = document.getElementById('upiFields');
   opts.forEach(o => o.classList.remove('active'));
-  if(type === 'card') {
+  cardF.style.display = 'none';
+  upiF.style.display = 'none';
+  if(type === 'card'){
     document.getElementById('payRadioCard').checked = true;
     opts[0].classList.add('active');
     cardF.style.display = 'block';
+  } else if(type === 'upi'){
+    document.getElementById('payRadioUpi').checked = true;
+    opts[1].classList.add('active');
+    upiF.style.display = 'block';
   } else {
     document.getElementById('payRadioCod').checked = true;
-    opts[1].classList.add('active');
-    cardF.style.display = 'none';
+    opts[2].classList.add('active');
   }
 }
 
-function placeOrder() {
-  // Validate shipping mandatory tracking fields array configuration
+function placeOrder(){
   const fName = document.getElementById('chkFirst').value.trim();
   const addr = document.getElementById('chkAddr').value.trim();
   const city = document.getElementById('chkCity').value.trim();
-  
-  if(!fName || !addr || !city) {
-    showToast('Please complete key missing shipping fields.', 'warn');
-    return;
-  }
-
-  if(paymentMethod === 'card') {
+  const mobile = document.getElementById('chkMobile') ? document.getElementById('chkMobile').value.trim() : '';
+  if(!fName || !addr || !city){ showToast('Please fill in all shipping fields.','warn'); return; }
+  if(paymentMethod === 'card'){
     const cNum = document.getElementById('chkCardNum').value.trim();
-    if(cNum.length < 12) {
-      showToast('Enter a valid testing card metric string pattern.', 'warn');
-      return;
-    }
+    if(cNum.length < 12){ showToast('Enter a valid card number.','warn'); return; }
   }
-
-  // Generate complete final structural verification report order payload receipt
+  if(paymentMethod === 'upi'){
+    const upi = document.getElementById('chkUpiId').value.trim();
+    if(!upi || !upi.includes('@')){ showToast('Enter a valid UPI ID (e.g. name@upi)','warn'); return; }
+  }
   const randomId = "KV-" + Math.floor(100000 + Math.random() * 900000);
   document.getElementById('confOrderId').textContent = randomId;
-  document.getElementById('confDate').textContent = new Date().toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  document.getElementById('confPayment').textContent = paymentMethod === 'card' ? 'Credit Card' : 'Cash on Delivery';
+  document.getElementById('confDate').textContent = new Date().toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});
+  const payLabels = {card:'Credit / Debit Card', upi:'UPI Payment', cod:'Cash on Delivery'};
+  document.getElementById('confPayment').textContent = payLabels[paymentMethod] || 'Cash on Delivery';
 
   const itemsReview = document.getElementById('confItems');
   itemsReview.innerHTML = '';
+  const savedItems = [];
+  let savedSubtotal = 0;
   cart.forEach(item => {
+    savedSubtotal += item.price * item.qty;
+    savedItems.push({...item});
     const row = document.createElement('div');
     row.style = 'display:flex;justify-content:space-between;font-size:13px;padding:6px 0;color:var(--sub)';
-    row.innerHTML = `<span>${item.name} (x${item.qty})</span><strong>$${item.price * item.qty}</strong>`;
+    row.innerHTML = `<span>${item.name} (x${item.qty})</span><strong>${inr(item.price * item.qty)}</strong>`;
     itemsReview.appendChild(row);
   });
-
-  // Reset core tracking matrix state values array elements pool
+  const savedShipping = savedSubtotal >= 12600 ? 0 : 200;
+  const savedTotal = savedSubtotal + savedShipping;
+  // Save to orders history
+  orders.unshift({
+    id: randomId,
+    date: new Date().toLocaleDateString('en-IN',{day:'numeric',month:'short',year:'numeric'}),
+    payment: payLabels[paymentMethod] || paymentMethod,
+    items: [...savedItems],
+    subtotal: savedSubtotal,
+    shipping: savedShipping,
+    total: savedTotal,
+    status: 'Confirmed'
+  });
   cart = [];
   updateCartBadges();
   switchPage('pageConfirm');
 }
 
-// ══ QUICK SEARCH COMPONENT LOGIC ══
-function toggleSearch() {
+// ══ SEARCH ══
+function toggleSearch(){
   const modal = document.getElementById('searchModal');
   modal.classList.toggle('open');
-  if(modal.classList.contains('open')) {
+  if(modal.classList.contains('open')){
     const input = document.getElementById('searchInput');
     input.value = '';
     input.focus();
@@ -1173,99 +1940,196 @@ function toggleSearch() {
   }
 }
 
-function handleSearch(q) {
+function handleSearch(q){
   const query = q.toLowerCase().trim();
   const container = document.getElementById('searchResults');
   container.innerHTML = '';
-
-  if(query.length === 0) {
-    container.innerHTML = '<div style="padding:16px;text-align:center;color:var(--muted);font-size:13px">Type above to look through active real-time store indices...</div>';
+  if(query.length === 0){
+    container.innerHTML = '<div style="padding:16px;text-align:center;color:var(--muted);font-size:13px">Type to search across 32 sneakers...</div>';
     return;
   }
-
-  const matches = products.filter(p => 
-    p.name.toLowerCase().includes(query) || 
-    p.brand.toLowerCase().includes(query) || 
+  const matches = products.filter(p =>
+    p.name.toLowerCase().includes(query) ||
+    p.brand.toLowerCase().includes(query) ||
     p.cat.toLowerCase().includes(query)
   );
-
-  if(matches.length === 0) {
-    container.innerHTML = '<div style="padding:16px;text-align:center;color:var(--muted);font-size:13px">No historical style matches found for query input context.</div>';
+  if(matches.length === 0){
+    container.innerHTML = '<div style="padding:16px;text-align:center;color:var(--muted);font-size:13px">No matches found.</div>';
     return;
   }
-
   matches.forEach(p => {
     const div = document.createElement('div');
     div.className = 'sr-item';
-    div.onclick = () => {
-      toggleSearch();
-      viewDetails(p.id);
-    };
-    div.innerHTML = `
-      <div class="sr-img"><img src="${p.img}"/></div>
-      <div class="sr-info">
-        <h4>${p.name}</h4>
-        <p>${p.brand} | Category: ${p.cat}</p>
-      </div>
-      <div class="sr-price">$${p.price}</div>
-    `;
+    div.onclick = () => { toggleSearch(); viewDetails(p.id); };
+    div.innerHTML = `<div class="sr-img"><img src="${p.img}"/></div><div class="sr-info"><h4>${p.name}</h4><p>${p.brand} | ${p.cat}</p></div><div class="sr-price">${inr(p.price)}</div>`;
     container.appendChild(div);
   });
 }
 
-// ══ MODAL AUTHORIZATION DIALOG MANAGER ══
-function openSignInModal() {
-  setAuthTab('signin');
-  document.getElementById('signInModal').classList.add('open');
-}
-
-function closeSignInModal() {
-  document.getElementById('signInModal').classList.remove('open');
-}
-
-function setAuthTab(mode) {
+// ══ AUTH ══
+function openSignInModal(){ setAuthTab('signin'); document.getElementById('signInModal').classList.add('open'); }
+function closeSignInModal(){ document.getElementById('signInModal').classList.remove('open'); }
+function setAuthTab(mode){
   authMode = mode;
-  const tSignIn = document.getElementById('tabSignIn');
-  const tSignUp = document.getElementById('tabSignUp');
+  const tSI = document.getElementById('tabSignIn');
+  const tSU = document.getElementById('tabSignUp');
   const suf = document.getElementById('signUpFields');
-  const mainBtn = document.getElementById('authSubmitBtn');
-
-  if(mode === 'signin') {
-    tSignIn.classList.add('active');
-    tSignUp.classList.remove('active');
+  const btn = document.getElementById('authSubmitBtn');
+  if(mode === 'signin'){
+    tSI.classList.add('active'); tSU.classList.remove('active');
     suf.style.display = 'none';
     document.getElementById('modalTitle').textContent = "Welcome Back";
     document.getElementById('modalSub').textContent = "Sign in to unlock exclusive release allocations.";
-    mainBtn.textContent = "Sign In";
+    btn.textContent = "Sign In";
   } else {
-    tSignIn.classList.remove('active');
-    tSignUp.classList.add('active');
+    tSI.classList.remove('active'); tSU.classList.add('active');
     suf.style.display = 'block';
     document.getElementById('modalTitle').textContent = "Create Account";
-    document.getElementById('modalSub').textContent = "Join kixVerse VIP squad roster pool.";
-    mainBtn.textContent = "Register Account";
+    document.getElementById('modalSub').textContent = "Join kixVerse VIP squad.";
+    btn.textContent = "Register Account";
   }
 }
 
-function handleAuthSubmit() {
+function handleAuthSubmit(){
   const e = document.getElementById('authEmail').value.trim();
-  if(authMode === 'signin') {
-    if(!e || !e.includes('@')) { showToast('Enter a valid account authentication address email string.', 'warn'); return; }
-    loggedIn = true;
-    userName = e.split('@')[0];
+  if(authMode === 'signin'){
+    if(!e || !e.includes('@')){ showToast('Enter a valid email address.','warn'); return; }
+    loggedIn = true; userName = e.split('@')[0];
     document.getElementById('signInNavBtn').textContent = 'Hi, ' + userName;
     closeSignInModal();
-    showToast('Signed in successfully! Welcome back! 👋', 'check');
+    showToast('Signed in! Welcome back 👋','check');
   } else {
     const first = document.getElementById('suFirst').value.trim();
+    const last = document.getElementById('suLast').value.trim();
+    const mobile = document.getElementById('suMobile').value.trim();
     const p = document.getElementById('authPass').value;
-    if(!first) { showToast('Enter your first name', 'warn'); return; }
-    if(!e || !e.includes('@')) { showToast('Enter a valid email', 'warn'); return; }
-    if(p.length < 8) { showToast('Password must be at least 8 characters', 'warn'); return; }
-    loggedIn = true; userName = first;
+    if(!first){ showToast('Enter your first name','warn'); return; }
+    if(!e || !e.includes('@')){ showToast('Enter a valid email','warn'); return; }
+    if(!mobile){ showToast('Enter your mobile number','warn'); return; }
+    if(p.length < 8){ showToast('Password must be 8+ characters','warn'); return; }
+    loggedIn = true; userName = first + (last?' '+last:'');
     document.getElementById('signInNavBtn').textContent = 'Hi, ' + first;
     closeSignInModal();
-    showToast('Account created! Welcome, ' + first + '! 🎉', 'check');
+    showToast('Account created! Welcome, ' + first + '! 🎉','check');
+  }
+}
+
+
+// ══ MY ORDERS ══
+function goOrders(){
+  if(!loggedIn){ showToast('Please sign in to view your orders','warn'); openSignInModal(); return; }
+  renderOrdersPage();
+  switchPage('pageOrders');
+}
+
+function getStatusClass(s){
+  const map = {'Confirmed':'status-confirmed','Processing':'status-processing','Shipped':'status-shipped','Out for Delivery':'status-outfordelivery','Delivered':'status-delivered','Cancelled':'status-cancelled'};
+  return map[s] || 'status-confirmed';
+}
+
+function renderOrdersPage(){
+  const content = document.getElementById('ordersContent');
+  const subtitle = document.getElementById('ordersSubtitle');
+  const filter = document.getElementById('orderFilterStatus').value;
+
+  let filtered = filter === 'All' ? [...orders] : orders.filter(o => o.status === filter);
+
+  // Summary bar
+  const totalSpent = orders.reduce((a,o) => a + (o.total||0), 0);
+  const delivered = orders.filter(o => o.status === 'Delivered').length;
+  const active = orders.filter(o => !['Delivered','Cancelled'].includes(o.status)).length;
+  subtitle.textContent = orders.length + (orders.length===1?' order':' orders') + ' placed';
+
+  let summaryHtml = '';
+  if(orders.length > 0){
+    summaryHtml = `<div class="orders-summary-bar">
+      <div class="osb-card"><div class="osb-num">${orders.length}</div><div class="osb-label">Total Orders</div></div>
+      <div class="osb-card"><div class="osb-num">${active}</div><div class="osb-label">Active Orders</div></div>
+      <div class="osb-card"><div class="osb-num">${delivered}</div><div class="osb-label">Delivered</div></div>
+      <div class="osb-card"><div class="osb-num">${inr(totalSpent)}</div><div class="osb-label">Total Spent</div></div>
+    </div>`;
+  }
+
+  if(filtered.length === 0){
+    content.innerHTML = summaryHtml + `<div class="orders-empty">
+      <div class="oe-icon">📦</div>
+      <h3>${orders.length === 0 ? 'No orders yet!' : 'No orders match this filter'}</h3>
+      <p>${orders.length === 0 ? 'Looks like you haven\'t placed any orders yet. Start shopping!' : 'Try selecting a different status filter.'}</p>
+      <button onclick="goHome()" style="background:var(--brand);color:#fff;border:none;padding:12px 28px;border-radius:var(--rs);font-size:14px;font-weight:600;cursor:pointer">Browse Sneakers</button>
+    </div>`;
+    return;
+  }
+
+  let ordersHtml = summaryHtml;
+  filtered.forEach((order, idx) => {
+    const statusClass = getStatusClass(order.status);
+    const itemsHtml = order.items.map(item => `
+      <div class="order-item-row">
+        <div class="oi-img"><img src="${item.img}" alt="${item.name}"/></div>
+        <div class="oi-info">
+          <div class="oi-name">${item.name}</div>
+          <div class="oi-meta">${item.brand} &nbsp;·&nbsp; Size: US ${item.size} &nbsp;·&nbsp; Qty: ${item.qty}</div>
+        </div>
+        <div class="oi-price">${inr(item.price * item.qty)}</div>
+      </div>`).join('');
+
+    const shippingLine = order.shipping > 0 
+      ? `<span style="font-size:12px;color:var(--muted)">&nbsp;(incl. ₹${order.shipping} shipping)</span>` 
+      : `<span style="font-size:12px;color:var(--green)">&nbsp;+ Free Shipping</span>`;
+
+    ordersHtml += `
+    <div class="order-row">
+      <div class="order-row-head">
+        <div class="order-id-block">
+          <div class="oid">${order.id}</div>
+          <div class="odate">📅 ${order.date}</div>
+        </div>
+        <span class="order-status-pill ${statusClass}">${order.status}</span>
+        <div class="order-total-block">
+          <div class="ototal">${inr(order.total)}${shippingLine}</div>
+          <div class="opay">💳 ${order.payment}</div>
+        </div>
+      </div>
+      <div class="order-row-body">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:.5px;color:var(--muted);margin-bottom:12px">${order.items.length} Item${order.items.length>1?'s':''}</div>
+        <div class="order-items-list">${itemsHtml}</div>
+      </div>
+      <div class="order-row-foot">
+        <button class="btn-order-track" onclick="trackFromOrder('${order.id}')">📦 Track Order</button>
+        <button class="btn-order-reorder" onclick="reorder(${idx})">🔄 Reorder</button>
+        <button class="btn-order-return" onclick="returnFromOrder('${order.id}')">↩ Return / Refund</button>
+        <button class="btn-order-return" onclick="cancelOrder(${idx})" style="${order.status==='Delivered'||order.status==='Cancelled'?'display:none':''}">✕ Cancel Order</button>
+      </div>
+    </div>`;
+  });
+
+  content.innerHTML = ordersHtml;
+}
+
+function trackFromOrder(oid){
+  switchPage('pageTrack');
+  document.getElementById('trackOrderId').value = oid;
+  setTimeout(()=>doTrackOrder(),100);
+}
+
+function returnFromOrder(oid){
+  switchPage('pageReturn');
+  setTimeout(()=>{ document.getElementById('retOrderId').value = oid; }, 100);
+}
+
+function reorder(idx){
+  const order = orders[idx];
+  if(!order) return;
+  order.items.forEach(item => addToCartInternal({id:item.id,brand:item.brand,name:item.name,price:item.price,img:item.img}, item.size, item.qty));
+  showToast('Items added to cart! 🛒','check');
+  toggleCart();
+}
+
+function cancelOrder(idx){
+  if(orders[idx] && !['Delivered','Cancelled'].includes(orders[idx].status)){
+    orders[idx].status = 'Cancelled';
+    renderOrdersPage();
+    showToast('Order ' + orders[idx].id + ' cancelled.','warn');
   }
 }
 
@@ -1273,28 +2137,16 @@ function handleAuthSubmit() {
 let toastTimer;
 function showToast(msg, type='check'){
   const el = document.getElementById('toastEl');
-  const icon = document.getElementById('toastIcon');
   document.getElementById('toastMsg').textContent = msg;
   const paths = {
     'check':'<polyline points="20 6 9 17 4 12"/>',
     'warn':'<path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/>',
     'heart':'<path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>'
   };
-  icon.innerHTML = `<svg viewBox="0 0 24 24">${paths[type] || paths['check']}</svg>`;
-  
+  document.getElementById('toastIcon').innerHTML = `<svg viewBox="0 0 24 24">${paths[type]||paths['check']}</svg>`;
   el.classList.add('show');
   clearTimeout(toastTimer);
-  toastTimer = setTimeout(() => { el.classList.remove('show'); }, 3500);
-}
-
-function toggleWishlist(event, element) {
-  event.stopPropagation();
-  element.classList.toggle('liked');
-  if(element.classList.contains('liked')) {
-    showToast('Added pair selection items into permanent profile wishlist metric array container!', 'heart');
-  } else {
-    showToast('Removed pair selection item from wishlist.', 'check');
-  }
+  toastTimer = setTimeout(() => el.classList.remove('show'), 3500);
 }
 </script>
 </body>

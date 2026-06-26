@@ -475,6 +475,31 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
   .main-img{height:300px}
   .compare-table{font-size:12px}
 }
+/* ── MOBILE BRAND LOGO (fixed top-left) ── */
+#mobileBrandLogo{
+  display:none;
+  position:fixed;
+  top:10px;
+  left:12px;
+  z-index:200;
+  align-items:center;
+  gap:8px;
+  background:rgba(255,255,255,0.92);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
+  border-radius:12px;
+  padding:6px 12px 6px 8px;
+  box-shadow:0 2px 12px rgba(0,0,0,0.1);
+  cursor:pointer;
+}
+#mobileBrandLogo .m-logo-icon{width:30px;height:30px;background:var(--brand);border-radius:8px;display:grid;place-items:center;flex-shrink:0}
+#mobileBrandLogo .m-logo-icon svg{width:18px;height:18px;fill:#fff}
+#mobileBrandLogo .m-logo-name{font-size:15px;font-weight:800;color:var(--text)}
+#mobileBrandLogo .m-logo-name span{color:var(--brand)}
+@media(max-width:680px){
+  #mobileBrandLogo{display:flex}
+}
+
 @media(max-width:680px){
   /* Hide nav bar shell but keep action buttons */
   #mainNav .logo{display:none}
@@ -669,6 +694,12 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
     </div>
   </div>
 </nav>
+
+<!-- ══ MOBILE BRAND LOGO ══ -->
+<div id="mobileBrandLogo" onclick="goHome()">
+  <div class="m-logo-icon"><svg viewBox="0 0 24 24"><path d="M3 17l3-8 4 4 4-6 4 10H3z"/></svg></div>
+  <span class="m-logo-name">kix<span>Verse</span></span>
+</div>
 
 <!-- ══ MOBILE SLIDE-OUT MENU ══ -->
 <div class="mob-menu-overlay" id="mobMenuOverlay" onclick="closeMobMenu()"></div>
@@ -1582,6 +1613,17 @@ const products = [
   {id:36,brand:'New Balance',name:'2002R Protection Pack',price:13440,oldPrice:16800,cat:'Running',rating:4.8,revs:412,img:'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?w=500&q=80',sizes:[7,7.5,8,8.5,9,9.5,10,10.5,11,12],isNew:true,isHot:true},
   {id:37,brand:'Reebok',name:'Classic Leather Legacy AZ',price:6720,oldPrice:8400,cat:'Lifestyle',rating:4.5,revs:198,img:'https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:false,isHot:false},
   {id:38,brand:'Under Armour',name:'HOVR Phantom 3 Storm',price:11340,oldPrice:13440,cat:'Running',rating:4.7,revs:143,img:'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80',sizes:[8,8.5,9,9.5,10,10.5,11,12],isNew:true,isHot:false},
+  // ── 10 New Arrivals ──
+  {id:39,brand:'Nike',name:'Air Max 270 React Future',price:12600,oldPrice:15120,cat:'Lifestyle',rating:4.8,revs:312,img:'https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:true,isHot:true},
+  {id:40,brand:'Adidas',name:'NMD_R1 Primeblue Classic',price:10920,oldPrice:13440,cat:'Lifestyle',rating:4.7,revs:278,img:'https://images.unsplash.com/photo-1608231387042-66d1773070a5?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:false,isHot:false},
+  {id:41,brand:'New Balance',name:'574 Core Heritage Suede',price:8820,oldPrice:10500,cat:'Lifestyle',rating:4.6,revs:195,img:'https://images.unsplash.com/photo-1539185441755-769473a23570?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:false,isHot:false},
+  {id:42,brand:'Puma',name:'Velocity Nitro 2 Elite',price:10080,oldPrice:12180,cat:'Running',rating:4.7,revs:167,img:'https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:true,isHot:false},
+  {id:43,brand:'Jordan',name:'Air Jordan 4 Retro Thunder',price:18900,oldPrice:23520,cat:'Basketball',rating:4.9,revs:445,img:'https://images.unsplash.com/photo-1552346154-21d32810aba3?w=500&q=80',sizes:[8,9,10,11,12,13],isNew:true,isHot:true},
+  {id:44,brand:'Vans',name:'Era Pro Classic Canvas',price:5460,oldPrice:6720,cat:'Skateboarding',rating:4.5,revs:389,img:'https://images.unsplash.com/photo-1525966222134-fcfa99b8ae77?w=500&q=80',sizes:[6,7,8,9,10,11,12],isNew:false,isHot:false},
+  {id:45,brand:'Asics',name:'Gel-Nimbus 26 Premium',price:14700,oldPrice:17640,cat:'Running',rating:4.8,revs:231,img:'https://images.unsplash.com/photo-1515955656352-a1fa3ffcd111?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:true,isHot:false},
+  {id:46,brand:'Hoka',name:'Bondi 8 Max Cushion Road',price:13440,oldPrice:15960,cat:'Running',rating:4.9,revs:388,img:'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80',sizes:[7,7.5,8,8.5,9,9.5,10,10.5,11,12],isNew:false,isHot:true},
+  {id:47,brand:'Converse',name:'Run Star Hike Platform',price:8400,oldPrice:9660,cat:'Lifestyle',rating:4.6,revs:142,img:'https://images.unsplash.com/photo-1560769629-975ec94e6a86?w=500&q=80',sizes:[6,7,8,9,10,11,12],isNew:true,isHot:false},
+  {id:48,brand:'Reebok',name:'Nano X4 Training Beast',price:9660,oldPrice:11760,cat:'Training',rating:4.7,revs:209,img:'https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=500&q=80',sizes:[7,8,9,10,11,12],isNew:true,isHot:false},
 ];
 
 // ── Fake review data ──

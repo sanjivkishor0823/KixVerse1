@@ -476,7 +476,32 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
   .compare-table{font-size:12px}
 }
 @media(max-width:680px){
-  #mainNav{display:none}
+  /* Hide nav bar shell but keep action buttons */
+  #mainNav .logo{display:none}
+  #mainNav .nav-links{display:none}
+  #mainNav{background:transparent;border-bottom:none;height:0;min-height:0;padding:0}
+  #mainNav .nav-inner{height:0;padding:0}
+
+  /* Pin the 4 buttons to top-right corner */
+  .nav-actions{
+    position:fixed;
+    top:10px;
+    right:12px;
+    z-index:200;
+    display:flex;
+    gap:6px;
+    align-items:center;
+    background:rgba(255,255,255,0.92);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+    border-radius:12px;
+    padding:6px 8px;
+    box-shadow:0 2px 12px rgba(0,0,0,0.1);
+  }
+  .nav-actions .icon-btn{width:36px;height:36px}
+  .nav-actions .btn-primary{padding:0 12px;font-size:13px;height:36px}
+  .hamburger-btn{display:none}
+
   .hero-carousel{height:260px}
   .hero-glass h1{font-size:24px}
   .hero-content{padding:16px}
@@ -487,9 +512,6 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
   .drawer{width:100%}
   .form-row{grid-template-columns:1fr}
   .compare-bar-inner{flex-wrap:wrap}
-  /* hide sign in btn text on very small screens, keep icon row compact */
-  .btn-primary{padding:0 12px;font-size:13px}
-  /* add bottom padding so content isn't hidden behind bottom tab bar */
   body{padding-bottom:64px}
 }
 
@@ -504,7 +526,7 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
 .hamburger-btn:hover{border-color:var(--brand)}
 .hamburger-btn span{display:block;width:18px;height:2px;background:var(--sub);border-radius:2px;transition:all .25s}
 @media(max-width:680px){
-  .hamburger-btn{display:flex}
+  .hamburger-btn{display:none}
 }
 
 /* ── MOBILE SLIDE-OUT MENU ── */

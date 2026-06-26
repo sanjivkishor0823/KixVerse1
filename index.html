@@ -46,24 +46,49 @@ nav{background:#fff;border-bottom:1px solid var(--border);position:sticky;top:0;
 .wrap{max-width:1280px;margin:0 auto;padding:0 24px}
 .sec{padding-top:40px}
 
-/* ─── HERO ─── */
-.hero-banner{border-radius:20px;overflow:hidden;position:relative;height:380px;
-  background:linear-gradient(135deg,#1a1a2e,#0f3460);display:flex;align-items:center;margin-top:28px}
-.hero-bg{position:absolute;inset:0;
-  background:radial-gradient(ellipse at 70% 50%,rgba(91,79,232,.3) 0%,transparent 60%),
-  url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&q=80') center/cover no-repeat;opacity:.55}
+/* ─── HERO CAROUSEL ─── */
+.hero-carousel{border-radius:20px;overflow:hidden;position:relative;height:380px;margin-top:28px;background:#1a1a2e}
+.hero-slides{display:flex;height:100%;transition:transform .6s cubic-bezier(.4,0,.2,1);will-change:transform}
+.hero-slide{flex-shrink:0;width:100%;height:100%;position:relative;display:flex;align-items:center}
+
+/* Slide 1 — Black Friday */
+.slide-bf{background:linear-gradient(135deg,#7B0000,#1a0000)}
+.slide-bf .hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1542291026-7eec264c27ff?w=1200&q=80') center/cover no-repeat;opacity:.35}
+
+/* Slide 2 — Independence Special */
+.slide-ind{background:linear-gradient(135deg,#065F46,#047857)}
+.slide-ind .slide-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1552346154-21d32810aba3?w=1200&q=80') right center/cover no-repeat;opacity:.25}
+
+/* Slide 3 — Flash Sale */
+.slide-flash{background:linear-gradient(135deg,#BE185D,#7C3AED)}
+.slide-flash .slide-img{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1606107557195-0e29a4b5b4aa?w=1200&q=80') right center/cover no-repeat;opacity:.22}
+
 .hero-content{position:relative;z-index:2;padding:48px}
-.hero-glass{background:rgba(255,255,255,.1);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.18);
-  border-radius:18px;padding:32px 36px;max-width:430px}
-.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);
-  color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:14px;
-  letter-spacing:.6px;text-transform:uppercase}
+.hero-glass{background:rgba(255,255,255,.1);backdrop-filter:blur(16px);border:1px solid rgba(255,255,255,.18);border-radius:18px;padding:32px 36px;max-width:430px}
+.hero-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;margin-bottom:14px;letter-spacing:.6px;text-transform:uppercase}
 .hero-glass h1{font-size:40px;font-weight:900;color:#fff;line-height:1.05;margin-bottom:10px;text-transform:uppercase;letter-spacing:-1px}
 .hero-glass h1 span{color:#A78BFA}
-.hero-glass p{color:rgba(255,255,255,.75);font-size:14px;font-style:italic;margin-bottom:22px}
-.btn-shop{background:var(--brand);color:#fff;border:none;padding:12px 28px;border-radius:10px;
-  font-size:14px;font-weight:700;cursor:pointer;transition:all .15s}
+.hero-glass h1 .green-accent{color:#6EE7B7}
+.hero-glass h1 .pink-accent{color:#F9A8D4}
+.hero-glass p{color:rgba(255,255,255,.75);font-size:14px;margin-bottom:6px}
+.hero-glass .offer-code{display:inline-block;background:rgba(255,255,255,.18);border:1px dashed rgba(255,255,255,.45);color:#fff;font-size:12px;font-weight:700;padding:4px 12px;border-radius:6px;letter-spacing:.6px;margin-bottom:16px;cursor:pointer}
+.btn-shop{background:var(--brand);color:#fff;border:none;padding:12px 28px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s}
 .btn-shop:hover{background:var(--brand-dark);transform:translateY(-1px)}
+.btn-shop-green{background:rgba(255,255,255,.2);border:2px solid rgba(255,255,255,.6);color:#fff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-shop-green:hover{background:rgba(255,255,255,.35)}
+.btn-shop-pink{background:rgba(255,255,255,.18);border:2px solid rgba(255,255,255,.5);color:#fff;padding:11px 26px;border-radius:10px;font-size:14px;font-weight:700;cursor:pointer;transition:all .15s}
+.btn-shop-pink:hover{background:rgba(255,255,255,.3)}
+
+/* carousel controls */
+.carousel-prev,.carousel-next{position:absolute;top:50%;transform:translateY(-50%);z-index:10;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.15);border:1.5px solid rgba(255,255,255,.3);cursor:pointer;display:grid;place-items:center;transition:all .2s;backdrop-filter:blur(8px)}
+.carousel-prev{left:16px}.carousel-next{right:16px}
+.carousel-prev:hover,.carousel-next:hover{background:rgba(255,255,255,.3)}
+.carousel-prev svg,.carousel-next svg{width:18px;height:18px;stroke:#fff;fill:none;stroke-width:2.5}
+
+/* dots */
+.carousel-dots{position:absolute;bottom:16px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:10}
+.carousel-dot{width:8px;height:8px;border-radius:50%;background:rgba(255,255,255,.4);cursor:pointer;transition:all .3s;border:none;padding:0}
+.carousel-dot.active{background:#fff;width:24px;border-radius:4px}
 
 /* ─── SECTION HEADER ─── */
 .sec-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:20px}
@@ -452,16 +477,139 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
 }
 @media(max-width:680px){
   .nav-links{display:none}
-  .hero-banner{height:260px}
-  .hero-glass h1{font-size:26px}
-  .hero-content{padding:20px}
-  .hero-glass{padding:20px 22px}
+  .hero-carousel{height:260px}
+  .hero-glass h1{font-size:24px}
+  .hero-content{padding:16px}
+  .hero-glass{padding:18px 20px;max-width:88%}
   .pgrid{grid-template-columns:repeat(2,1fr)}
   .promo-row{grid-template-columns:1fr}
   .footer-grid{grid-template-columns:1fr 1fr}
   .drawer{width:100%}
   .form-row{grid-template-columns:1fr}
   .compare-bar-inner{flex-wrap:wrap}
+  /* hide sign in btn text on very small screens, keep icon row compact */
+  .btn-primary{padding:0 12px;font-size:13px}
+  /* add bottom padding so content isn't hidden behind bottom tab bar */
+  body{padding-bottom:64px}
+}
+
+/* ── HAMBURGER BUTTON (mobile only) ── */
+.hamburger-btn{
+  display:none;
+  width:40px;height:40px;
+  border:1px solid var(--border);background:#fff;border-radius:var(--rs);
+  cursor:pointer;flex-direction:column;align-items:center;justify-content:center;gap:5px;
+  flex-shrink:0;transition:border-color .15s;
+}
+.hamburger-btn:hover{border-color:var(--brand)}
+.hamburger-btn span{display:block;width:18px;height:2px;background:var(--sub);border-radius:2px;transition:all .25s}
+@media(max-width:680px){
+  .hamburger-btn{display:flex}
+}
+
+/* ── MOBILE SLIDE-OUT MENU ── */
+.mob-menu-overlay{
+  position:fixed;inset:0;background:rgba(0,0,0,.5);z-index:300;
+  opacity:0;pointer-events:none;transition:opacity .25s;
+}
+.mob-menu-overlay.open{opacity:1;pointer-events:all}
+
+.mob-menu{
+  position:fixed;top:0;left:0;bottom:0;width:82%;max-width:320px;
+  background:#fff;z-index:301;transform:translateX(-100%);
+  transition:transform .3s cubic-bezier(.4,0,.2,1);
+  display:flex;flex-direction:column;overflow:hidden;
+}
+.mob-menu.open{transform:translateX(0)}
+
+.mob-menu-head{
+  padding:20px 20px 16px;
+  border-bottom:1px solid var(--border);
+  display:flex;align-items:center;justify-content:space-between;
+}
+.mob-menu-logo{display:flex;align-items:center;gap:10px}
+.mob-menu-logo .logo-icon{width:34px;height:34px;background:var(--brand);border-radius:9px;display:grid;place-items:center}
+.mob-menu-logo .logo-icon svg{width:20px;height:20px;fill:#fff}
+.mob-menu-logo .logo-name{font-size:17px;font-weight:800}
+.mob-menu-logo .logo-name span{color:var(--brand)}
+.mob-close{width:34px;height:34px;background:var(--bg);border:none;border-radius:var(--rs);cursor:pointer;display:grid;place-items:center}
+.mob-close svg{width:18px;height:18px;stroke:var(--sub);fill:none;stroke-width:2}
+
+/* user greeting strip */
+.mob-user-strip{
+  margin:14px 16px;padding:14px 16px;
+  background:var(--brand-light);border-radius:var(--r);
+  display:flex;align-items:center;gap:12px;
+}
+.mob-user-avatar{
+  width:40px;height:40px;border-radius:50%;background:var(--brand);
+  display:grid;place-items:center;font-size:15px;font-weight:800;color:#fff;flex-shrink:0;
+}
+.mob-user-info h4{font-size:14px;font-weight:700;color:var(--text)}
+.mob-user-info p{font-size:12px;color:var(--sub)}
+.mob-sign-btn{margin-left:auto;background:var(--brand);color:#fff;border:none;padding:7px 14px;border-radius:var(--rs);font-size:12px;font-weight:700;cursor:pointer;white-space:nowrap}
+
+/* quick stats row */
+.mob-stats{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;padding:0 16px 14px;border-bottom:1px solid var(--border)}
+.mob-stat{background:var(--bg);border-radius:var(--rs);padding:10px 8px;text-align:center;cursor:pointer;transition:background .15s}
+.mob-stat:hover{background:var(--brand-light)}
+.mob-stat-num{font-size:18px;font-weight:900;color:var(--brand)}
+.mob-stat-label{font-size:10px;font-weight:600;color:var(--muted);text-transform:uppercase;letter-spacing:.4px;margin-top:2px}
+
+/* nav section */
+.mob-nav-section{padding:12px 16px 6px}
+.mob-nav-section-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;color:var(--muted);margin-bottom:8px}
+.mob-nav-item{
+  display:flex;align-items:center;gap:14px;padding:12px 14px;
+  border-radius:var(--rs);cursor:pointer;transition:background .15s;border:none;background:none;
+  width:100%;text-align:left;font-family:inherit;
+}
+.mob-nav-item:hover{background:var(--brand-light)}
+.mob-nav-item.active-item{background:var(--brand-light)}
+.mob-nav-item-icon{
+  width:36px;height:36px;border-radius:9px;background:var(--bg);
+  display:grid;place-items:center;flex-shrink:0;transition:background .15s;
+}
+.mob-nav-item:hover .mob-nav-item-icon,.mob-nav-item.active-item .mob-nav-item-icon{background:var(--brand)}
+.mob-nav-item-icon svg{width:17px;height:17px;stroke:var(--sub);fill:none;stroke-width:2;transition:stroke .15s}
+.mob-nav-item:hover .mob-nav-item-icon svg,.mob-nav-item.active-item .mob-nav-item-icon svg{stroke:#fff}
+.mob-nav-label{font-size:14px;font-weight:600;color:var(--text)}
+.mob-nav-badge{margin-left:auto;background:var(--brand);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;min-width:20px;text-align:center}
+.mob-nav-divider{height:1px;background:var(--border);margin:8px 16px}
+
+.mob-menu-body{flex:1;overflow-y:auto}
+
+/* offers strip at bottom of menu */
+.mob-offers{margin:12px 16px 20px;border-radius:var(--r);background:linear-gradient(135deg,#5B4FE8,#7C3AED);padding:16px;color:#fff}
+.mob-offers-tag{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:.8px;opacity:.75;margin-bottom:6px}
+.mob-offers-title{font-size:15px;font-weight:800;margin-bottom:10px}
+.mob-offers-code{display:inline-block;background:rgba(255,255,255,.2);border:1px dashed rgba(255,255,255,.5);padding:4px 12px;border-radius:6px;font-size:12px;font-weight:700;letter-spacing:.5px;cursor:pointer}
+
+/* ── BOTTOM TAB BAR (mobile only) ── */
+.bottom-tab-bar{
+  display:none;
+  position:fixed;bottom:0;left:0;right:0;
+  background:#fff;border-top:1px solid var(--border);
+  z-index:150;height:64px;
+  align-items:stretch;
+  box-shadow:0 -4px 16px rgba(0,0,0,.06);
+}
+@media(max-width:680px){
+  .bottom-tab-bar{display:flex}
+}
+.tab-item{
+  flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+  gap:3px;cursor:pointer;border:none;background:none;font-family:inherit;
+  transition:color .15s;color:var(--muted);position:relative;
+}
+.tab-item.active-tab{color:var(--brand)}
+.tab-item svg{width:22px;height:22px;stroke:currentColor;fill:none;stroke-width:1.8}
+.tab-item span{font-size:10px;font-weight:600;letter-spacing:.2px}
+.tab-badge{
+  position:absolute;top:8px;right:calc(50% - 20px);
+  background:var(--brand);color:#fff;font-size:9px;font-weight:700;
+  width:16px;height:16px;border-radius:50%;display:grid;place-items:center;
+  border:2px solid #fff;
 }
 </style>
 </head>
@@ -492,22 +640,201 @@ footer{background:#111827;color:rgba(255,255,255,.55);margin-top:60px;padding:48
         <span class="badge" id="cartBadge">0</span>
       </button>
       <button class="btn-primary" id="signInNavBtn">Sign In</button>
+      <!-- Hamburger — mobile only -->
+      <button class="hamburger-btn" id="hamburgerBtn" aria-label="Open menu">
+        <span></span><span></span><span></span>
+      </button>
     </div>
   </div>
 </nav>
 
+<!-- ══ MOBILE SLIDE-OUT MENU ══ -->
+<div class="mob-menu-overlay" id="mobMenuOverlay" onclick="closeMobMenu()"></div>
+<div class="mob-menu" id="mobMenu">
+  <div class="mob-menu-head">
+    <div class="mob-menu-logo">
+      <div class="logo-icon"><svg viewBox="0 0 24 24"><path d="M3 17l3-8 4 4 4-6 4 10H3z"/></svg></div>
+      <span class="logo-name">kix<span>Verse</span></span>
+    </div>
+    <button class="mob-close" onclick="closeMobMenu()"><svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+  </div>
+
+  <div class="mob-menu-body">
+    <!-- User strip -->
+    <div class="mob-user-strip" id="mobUserStrip">
+      <div class="mob-user-avatar" id="mobUserAvatar">👤</div>
+      <div class="mob-user-info">
+        <h4 id="mobUserName">Welcome!</h4>
+        <p id="mobUserSub">Sign in for the best experience</p>
+      </div>
+      <button class="mob-sign-btn" id="mobSignBtn" onclick="closeMobMenu();openSignInModal()">Sign In</button>
+    </div>
+
+    <!-- Quick stats -->
+    <div class="mob-stats">
+      <div class="mob-stat" onclick="closeMobMenu();goWishlist()">
+        <div class="mob-stat-num" id="mobStatWish">0</div>
+        <div class="mob-stat-label">Wishlist</div>
+      </div>
+      <div class="mob-stat" onclick="closeMobMenu();toggleCart()">
+        <div class="mob-stat-num" id="mobStatCart">0</div>
+        <div class="mob-stat-label">Cart</div>
+      </div>
+      <div class="mob-stat" onclick="closeMobMenu();goOrders()">
+        <div class="mob-stat-num" id="mobStatOrders">0</div>
+        <div class="mob-stat-label">Orders</div>
+      </div>
+    </div>
+
+    <!-- Main nav -->
+    <div class="mob-nav-section">
+      <div class="mob-nav-section-label">Browse</div>
+      <button class="mob-nav-item" onclick="closeMobMenu();goHome()">
+        <div class="mob-nav-item-icon"><svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg></div>
+        <span class="mob-nav-label">Home</span>
+      </button>
+      <button class="mob-nav-item" onclick="closeMobMenu();showCat('Running')">
+        <div class="mob-nav-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg></div>
+        <span class="mob-nav-label">Running</span>
+      </button>
+      <button class="mob-nav-item" onclick="closeMobMenu();showCat('Basketball')">
+        <div class="mob-nav-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M4.93 4.93l14.14 14.14"/><path d="M19.07 4.93L4.93 19.07"/></svg></div>
+        <span class="mob-nav-label">Basketball</span>
+      </button>
+      <button class="mob-nav-item" onclick="closeMobMenu();showCat('Lifestyle')">
+        <div class="mob-nav-item-icon"><svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></div>
+        <span class="mob-nav-label">Lifestyle</span>
+      </button>
+      <button class="mob-nav-item" onclick="closeMobMenu();showCat('Limited')">
+        <div class="mob-nav-item-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <span class="mob-nav-label">Limited Edition</span>
+      </button>
+    </div>
+
+    <div class="mob-nav-divider"></div>
+
+    <div class="mob-nav-section">
+      <div class="mob-nav-section-label">My Account</div>
+      <button class="mob-nav-item" onclick="closeMobMenu();goWishlist()">
+        <div class="mob-nav-item-icon"><svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg></div>
+        <span class="mob-nav-label">Wishlist</span>
+        <span class="mob-nav-badge" id="mobMenuWishBadge" style="display:none">0</span>
+      </button>
+      <button class="mob-nav-item" onclick="closeMobMenu();toggleCart()">
+        <div class="mob-nav-item-icon"><svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg></div>
+        <span class="mob-nav-label">Cart</span>
+        <span class="mob-nav-badge" id="mobMenuCartBadge">0</span>
+      </button>
+      <button class="mob-nav-item" onclick="closeMobMenu();goOrders()">
+        <div class="mob-nav-item-icon"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div>
+        <span class="mob-nav-label">My Orders</span>
+      </button>
+      <button class="mob-nav-item" onclick="closeMobMenu();switchPage('pageTrack')">
+        <div class="mob-nav-item-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg></div>
+        <span class="mob-nav-label">Track Order</span>
+      </button>
+    </div>
+
+    <div class="mob-nav-divider"></div>
+
+    <!-- Offer card inside menu -->
+    <div class="mob-offers">
+      <div class="mob-offers-tag">🔥 Active Offer</div>
+      <div class="mob-offers-title">Flat 20% Off Sitewide</div>
+      <div class="mob-offers-code" onclick="showToast('Code copied! 📋','check')">USE: KIXFRESH20</div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ BOTTOM TAB BAR ══ -->
+<div class="bottom-tab-bar" id="bottomTabBar">
+  <button class="tab-item active-tab" id="tab-home" onclick="goHome();setActiveTab('tab-home')">
+    <svg viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>
+    <span>Home</span>
+  </button>
+  <button class="tab-item" id="tab-search" onclick="toggleSearch();setActiveTab('tab-search')">
+    <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+    <span>Search</span>
+  </button>
+  <button class="tab-item" id="tab-wishlist" onclick="goWishlist();setActiveTab('tab-wishlist')">
+    <svg viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg>
+    <span>Wishlist</span>
+    <span class="tab-badge" id="tabWishBadge" style="display:none">0</span>
+  </button>
+  <button class="tab-item" id="tab-cart" onclick="toggleCart();setActiveTab('tab-cart')">
+    <svg viewBox="0 0 24 24"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"/><line x1="3" y1="6" x2="21" y2="6"/><path d="M16 10a4 4 0 0 1-8 0"/></svg>
+    <span>Cart</span>
+    <span class="tab-badge" id="tabCartBadge">0</span>
+  </button>
+  <button class="tab-item" id="tab-menu" onclick="openMobMenu()">
+    <svg viewBox="0 0 24 24"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+    <span>Menu</span>
+  </button>
+</div>
+
 <!-- ══ HOME PAGE ══ -->
 <div class="page active" id="pageHome">
   <div class="wrap">
-    <div class="hero-banner">
-      <div class="hero-bg"></div>
-      <div class="hero-content">
-        <div class="hero-glass">
-          <span class="hero-badge">🔥 Black Friday Sale</span>
-          <h1><span>20% Off</span><br>Black<br>Friday Sale</h1>
-          <p>Hurry up — limited time offer!</p>
-          <button class="btn-shop" onclick="scrollToProducts()">Shop Now →</button>
+    <!-- ══ HERO CAROUSEL ══ -->
+    <div class="hero-carousel" id="heroCarousel">
+      <div class="hero-slides" id="heroSlides">
+
+        <!-- SLIDE 1: Black Friday -->
+        <div class="hero-slide slide-bf">
+          <div class="hero-bg"></div>
+          <div class="hero-content">
+            <div class="hero-glass">
+              <span class="hero-badge">🔥 Black Friday Sale</span>
+              <h1><span>20% Off</span><br>Black<br>Friday Sale</h1>
+              <p>Hurry up — limited time offer!</p>
+              <button class="btn-shop" onclick="scrollToProducts()">Shop Now →</button>
+            </div>
+          </div>
         </div>
+
+        <!-- SLIDE 2: Independence Special -->
+        <div class="hero-slide slide-ind">
+          <div class="slide-img"></div>
+          <div class="hero-content">
+            <div class="hero-glass">
+              <span class="hero-badge">🇮🇳 Independence Special</span>
+              <h1>Flat <span class="green-accent">₹1,500</span><br>Off Orders<br>Above ₹8,000</h1>
+              <p>Use code:</p>
+              <div class="offer-code" onclick="copyHeroCode('INDIA75')">INDIA75 — Tap to Copy</div>
+              <button class="btn-shop-green" onclick="scrollToProducts()">Claim Offer</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- SLIDE 3: Flash Sale -->
+        <div class="hero-slide slide-flash">
+          <div class="slide-img"></div>
+          <div class="hero-content">
+            <div class="hero-glass">
+              <span class="hero-badge">⚡ Flash Sale</span>
+              <h1>Extra <span class="pink-accent">10% Off</span><br>On First<br>Order</h1>
+              <p>Use code:</p>
+              <div class="offer-code" onclick="copyHeroCode('KIXFIRST')">KIXFIRST — Tap to Copy</div>
+              <button class="btn-shop-pink" onclick="scrollToProducts()">Grab Deal</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Prev / Next arrows -->
+      <button class="carousel-prev" onclick="carouselMove(-1)">
+        <svg viewBox="0 0 24 24"><polyline points="15 18 9 12 15 6"/></svg>
+      </button>
+      <button class="carousel-next" onclick="carouselMove(1)">
+        <svg viewBox="0 0 24 24"><polyline points="9 18 15 12 9 6"/></svg>
+      </button>
+
+      <!-- Dots -->
+      <div class="carousel-dots" id="carouselDots">
+        <button class="carousel-dot active" onclick="carouselGoTo(0)"></button>
+        <button class="carousel-dot" onclick="carouselGoTo(1)"></button>
+        <button class="carousel-dot" onclick="carouselGoTo(2)"></button>
       </div>
     </div>
     <div class="sec">
@@ -1299,6 +1626,7 @@ window.addEventListener('DOMContentLoaded', () => {
 function setupEventListeners() {
   document.getElementById('cartBtn').addEventListener('click', toggleCart);
   document.getElementById('searchBtn').addEventListener('click', toggleSearch);
+  document.getElementById('hamburgerBtn').addEventListener('click', openMobMenu);
   const chips = document.querySelectorAll('#catChips .cat');
   chips.forEach(chip => {
     chip.addEventListener('click', (e) => {
@@ -1621,6 +1949,7 @@ function addToCartInternal(product, size, qty){
 function updateCartBadges(){
   const count = cart.reduce((acc,x) => acc+x.qty, 0);
   document.getElementById('cartBadge').textContent = count;
+  updateMobileBadges();
 }
 
 function alterCartItemQty(index, amt){
@@ -1683,6 +2012,7 @@ function updateWishBadge(){
   const badge = document.getElementById('wishBadge');
   badge.textContent = wishlist.size;
   badge.style.display = wishlist.size > 0 ? 'grid' : 'none';
+  updateMobileBadges();
 }
 
 function goWishlist(){
@@ -1998,6 +2328,7 @@ function handleAuthSubmit(){
     document.getElementById('signInNavBtn').textContent = 'Hi, ' + userName;
     closeSignInModal();
     showToast('Signed in! Welcome back 👋','check');
+    updateMobileBadges();
   } else {
     const first = document.getElementById('suFirst').value.trim();
     const last = document.getElementById('suLast').value.trim();
@@ -2011,6 +2342,7 @@ function handleAuthSubmit(){
     document.getElementById('signInNavBtn').textContent = 'Hi, ' + first;
     closeSignInModal();
     showToast('Account created! Welcome, ' + first + '! 🎉','check');
+    updateMobileBadges();
   }
 }
 
@@ -2133,7 +2465,93 @@ function cancelOrder(idx){
   }
 }
 
+// ══ MOBILE NAV ══
+function openMobMenu(){
+  document.getElementById('mobMenu').classList.add('open');
+  document.getElementById('mobMenuOverlay').classList.add('open');
+  document.body.style.overflow = 'hidden';
+  updateMobMenu();
+}
+function closeMobMenu(){
+  document.getElementById('mobMenu').classList.remove('open');
+  document.getElementById('mobMenuOverlay').classList.remove('open');
+  document.body.style.overflow = '';
+}
+function updateMobMenu(){
+  // stats
+  const wishCount = wishlist.size;
+  const cartCount = cart.reduce((a,x)=>a+x.qty,0);
+  document.getElementById('mobStatWish').textContent = wishCount;
+  document.getElementById('mobStatCart').textContent = cartCount;
+  // badges in menu
+  const wb = document.getElementById('mobMenuWishBadge');
+  wb.textContent = wishCount; wb.style.display = wishCount>0?'inline-block':'none';
+  document.getElementById('mobMenuCartBadge').textContent = cartCount;
+  // user strip
+  if(loggedIn){
+    document.getElementById('mobUserAvatar').textContent = userName.charAt(0).toUpperCase();
+    document.getElementById('mobUserName').textContent = 'Hi, ' + userName + '!';
+    document.getElementById('mobUserSub').textContent = 'Welcome back to kixVerse';
+    document.getElementById('mobSignBtn').textContent = 'My Account';
+    document.getElementById('mobSignBtn').onclick = () => { closeMobMenu(); goOrders(); };
+  }
+}
+function setActiveTab(tabId){
+  document.querySelectorAll('.tab-item').forEach(t => t.classList.remove('active-tab'));
+  const el = document.getElementById(tabId);
+  if(el) el.classList.add('active-tab');
+}
+function updateMobileBadges(){
+  // bottom tab bar badges
+  const cartCount = cart.reduce((a,x)=>a+x.qty,0);
+  const wishCount = wishlist.size;
+  const tabCart = document.getElementById('tabCartBadge');
+  const tabWish = document.getElementById('tabWishBadge');
+  if(tabCart){ tabCart.textContent = cartCount; tabCart.style.display = cartCount>0?'grid':'none'; }
+  if(tabWish){ tabWish.textContent = wishCount; tabWish.style.display = wishCount>0?'grid':'none'; }
+  document.getElementById('mobStatOrders').textContent = typeof orderHistory !== 'undefined' ? orderHistory.length : 0;
+}
+
 // ══ TOAST ══
+// ══ HERO CAROUSEL ══
+let carouselIndex = 0;
+const CAROUSEL_TOTAL = 3;
+let carouselTimer;
+
+function carouselGoTo(idx) {
+  carouselIndex = (idx + CAROUSEL_TOTAL) % CAROUSEL_TOTAL;
+  document.getElementById('heroSlides').style.transform = `translateX(-${carouselIndex * 100}%)`;
+  document.querySelectorAll('.carousel-dot').forEach((d, i) => {
+    d.classList.toggle('active', i === carouselIndex);
+  });
+  resetCarouselTimer();
+}
+function carouselMove(dir) { carouselGoTo(carouselIndex + dir); }
+function resetCarouselTimer() {
+  clearInterval(carouselTimer);
+  carouselTimer = setInterval(() => carouselMove(1), 5000);
+}
+function copyHeroCode(code) {
+  navigator.clipboard && navigator.clipboard.writeText(code);
+  showToast('Code ' + code + ' copied! Apply at checkout 🎉', 'check');
+}
+// Auto-play on load
+document.addEventListener('DOMContentLoaded', () => { resetCarouselTimer(); });
+
+// Touch swipe support for carousel
+(function(){
+  let sx = 0;
+  document.addEventListener('DOMContentLoaded', () => {
+    const el = document.getElementById('heroCarousel');
+    if (!el) return;
+    el.addEventListener('touchstart', e => { sx = e.touches[0].clientX; }, {passive:true});
+    el.addEventListener('touchend', e => {
+      const dx = e.changedTouches[0].clientX - sx;
+      if (Math.abs(dx) > 40) carouselMove(dx < 0 ? 1 : -1);
+    }, {passive:true});
+  });
+})();
+
 let toastTimer;
 function showToast(msg, type='check'){
   const el = document.getElementById('toastEl');
